@@ -20,7 +20,6 @@ INSTALLED_APPS = (
 
     'apps.theme',
     'apps.guest',
-    'apps.mail',
     'utils',
 )
 

@@ -1,4 +1,3 @@
-from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
@@ -7,12 +6,11 @@ admin.autodiscover()
 
 urlpatterns = patterns(
     '',
-    url(r'^$', 'apps.guest.views.index'),
+    url(r'^$', 'apps.core.views.home'),
     url(r'^login/$', 'apps.guest.views.login'),
     url(r'^auth/$', 'apps.guest.views.auth'),
     url(r'^logout/$', 'apps.guest.views.logout'),
     url(r'^theme/', include('apps.theme.urls')),
-    url(r'^mail/', include('apps.mail.urls')),
     url(r'^admin/', include(admin.site.urls))
 )
 

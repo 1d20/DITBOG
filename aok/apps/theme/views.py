@@ -2,7 +2,6 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.core.context_processors import csrf
-import os
 from models import Engine, Theme
 from utils.decorators import render_to
 from scripts import controller
@@ -11,10 +10,8 @@ import base64 as kostul
 from ditbog.settings import MEDIA_ROOT
 
 @login_required
-@render_to('themes.html')
+@render_to('theme/themes.html')
 def themes(request, engine_id=0):
-    title=''
-    themes = []
     if engine_id == 0:
         title = 'All themes'
         themes = Theme.objects.filter()
@@ -26,7 +23,7 @@ def themes(request, engine_id=0):
              'themes': themes}
 
 @login_required
-@render_to('theme.html')
+@render_to('theme/theme.html')
 def show(request, theme_id=0):
     title=Theme.objects.get(id=theme_id).title
     c = { 'active_page':'themes', 'active_engine':0, 'engines':Engine.objects.filter(), 'title':title,
@@ -35,7 +32,7 @@ def show(request, theme_id=0):
     return c
 
 @login_required
-@render_to('theme_add.html')
+@render_to('theme/theme_add.html')
 def add(request):
     if request.method == 'POST':
         if len(request.POST['theme']) > 0:
@@ -51,33 +48,20 @@ def add(request):
     return { 'active_page':'add_theme', 'title':'Add theme', 'active_engine':0, 'engines':Engine.objects.filter() }
 
 @login_required
-@render_to('themes.html')
+@render_to('theme/themes.html')
 def zip(request, type='nobody'):
     if request.method == 'POST':
         file_content = request.POST['file']
         file_content = kostul.b64decode(file_content)
         theme_id = int(request.POST.get('theme_id'))
         theme = Theme.objects.get(id=theme_id)
-        #if len(request.POST['theme']) > 0:
-        #    theme = Theme()
-        #    theme_engine = Engine.objects.get(id=request.POST['engine'])
-        #    theme.engine = theme_engine
-        #    theme.title = request.POST['theme']
-    #c.update(csrf(request))
-    #return { 'active_page':'add_t
-        #    theme.package_name = controller.generate_package_name(theme_engine.package_template_name, request.POST['theme'])
-        #    theme.save()
-        #    return  HttpResponseRedirect('/theme/themes/')
-        print MEDIA_ROOT+'/'+str(theme.path_res_folder)
-        #os.remove(MEDIA_ROOT+'/'+str(theme.path_res_folder))
         f = open(MEDIA_ROOT+'/'+str(theme.path_res_folder), 'w')
         f.write(file_content)
         f.close()
     return  HttpResponseRedirect('/theme/themes/')
-    #c = {}heme', 'title':'Add theme', 'active_engine':0, 'engines':Engine.objects.filter() }
 
 @login_required
-@render_to('themes.html')
+@render_to('theme/themes.html')
 def change(request):
     action = request.POST['sender']
     themes = request.POST['selected'].split(';')
