@@ -1,0 +1,1 @@
+print ‘just test it test asset’

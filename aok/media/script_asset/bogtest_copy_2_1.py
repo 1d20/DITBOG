@@ -1,0 +1,1 @@
+print ‘ditbog test asset’

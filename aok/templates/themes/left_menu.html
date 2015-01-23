@@ -1,0 +1,10 @@
+<div class="col-lg-2">
+    <br/>
+    <div class="list-group">
+        <a href="/theme/themes/" class="list-group-item {%if active_engine == 0 %}active{% endif %}">All engines</a>
+        {% for engine in engines %}
+        <a href="/theme/themes/{{engine.id}}"
+           class="list-group-item {%if active_engine == engine.id %}active{% endif %}">{{ engine.name }}</a>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>{% block title %}Main -{% endblock %} DITBOG</title>
+    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/my.css" rel="stylesheet">
+    {% block head_ex %}{% endblock %}
+</head>
+
+<body>
+    {% include 'top_menu.html' %}
+    {% block content %}{% endblock %}
+</body>
+</html>

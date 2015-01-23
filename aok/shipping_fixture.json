@@ -1,0 +1,1500 @@
+[
+    {
+        "pk": 4,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "contenttype",
+            "name": "content type",
+            "app_label": "contenttypes"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "description",
+            "name": "description",
+            "app_label": "theme"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "engine",
+            "name": "engine",
+            "app_label": "theme"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "group",
+            "name": "group",
+            "app_label": "auth"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "language",
+            "name": "language",
+            "app_label": "theme"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "logentry",
+            "name": "log entry",
+            "app_label": "admin"
+        }
+    },
+    {
+        "pk": 16,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "mail",
+            "name": "mail",
+            "app_label": "mail"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "market",
+            "name": "market",
+            "app_label": "theme"
+        }
+    },
+    {
+        "pk": 17,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "marketengine",
+            "name": "market engine",
+            "app_label": "mail"
+        }
+    },
+    {
+        "pk": 18,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "message",
+            "name": "message",
+            "app_label": "mail"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "permission",
+            "name": "permission",
+            "app_label": "auth"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "session",
+            "name": "session",
+            "app_label": "sessions"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "site",
+            "name": "site",
+            "app_label": "sites"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "templatedescription",
+            "name": "template description",
+            "app_label": "theme"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "theme",
+            "name": "theme",
+            "app_label": "theme"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "thememarket",
+            "name": "theme market",
+            "app_label": "theme"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "model": "user",
+            "name": "user",
+            "app_label": "auth"
+        }
+    },
+    {
+        "pk": "6c9435e91c330b633ffef9d78b2b48cd",
+        "model": "sessions.session",
+        "fields": {
+            "expire_date": "2014-01-30T03:43:41.817Z",
+            "session_data": "MjcwOGQ1YjViODMxOTM3YTg1MmQ4OTc3NWQyODJiYjBjYzhlN2RiZjqAAn1xAShVEl9hdXRoX3Vz\nZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHED\nVQ1fYXV0aF91c2VyX2lkcQRLAXUu\n"
+        }
+    },
+    {
+        "pk": "ea79d200dbffb4958cfe31a683b9e810",
+        "model": "sessions.session",
+        "fields": {
+            "expire_date": "2014-01-30T16:04:35.269Z",
+            "session_data": "MjcwOGQ1YjViODMxOTM3YTg1MmQ4OTc3NWQyODJiYjBjYzhlN2RiZjqAAn1xAShVEl9hdXRoX3Vz\nZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHED\nVQ1fYXV0aF91c2VyX2lkcQRLAXUu\n"
+        }
+    },
+    {
+        "pk": "58a65154f3dc4de9674f717f1c2cf57b",
+        "model": "sessions.session",
+        "fields": {
+            "expire_date": "2014-01-30T03:51:27.755Z",
+            "session_data": "MjcwOGQ1YjViODMxOTM3YTg1MmQ4OTc3NWQyODJiYjBjYzhlN2RiZjqAAn1xAShVEl9hdXRoX3Vz\nZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHED\nVQ1fYXV0aF91c2VyX2lkcQRLAXUu\n"
+        }
+    },
+    {
+        "pk": "639f6aad1d37f40532232cdc568e8524",
+        "model": "sessions.session",
+        "fields": {
+            "expire_date": "2014-02-02T20:07:27.554Z",
+            "session_data": "MjcwOGQ1YjViODMxOTM3YTg1MmQ4OTc3NWQyODJiYjBjYzhlN2RiZjqAAn1xAShVEl9hdXRoX3Vz\nZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHED\nVQ1fYXV0aF91c2VyX2lkcQRLAXUu\n"
+        }
+    },
+    {
+        "pk": "cc96cb2a853d2b7d88aa53521f9ba68e",
+        "model": "sessions.session",
+        "fields": {
+            "expire_date": "2014-02-13T19:02:41.079Z",
+            "session_data": "NGYzNzJiMGZiYjYzNmE1NTg2YTY0YTYyM2I4MDdlMDZlODM0Mzc2MDqAAn1xAS4=\n"
+        }
+    },
+    {
+        "pk": "ef82022dc4535e59703c4839acb3c01d",
+        "model": "sessions.session",
+        "fields": {
+            "expire_date": "2014-02-13T19:55:29.172Z",
+            "session_data": "MjcwOGQ1YjViODMxOTM3YTg1MmQ4OTc3NWQyODJiYjBjYzhlN2RiZjqAAn1xAShVEl9hdXRoX3Vz\nZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHED\nVQ1fYXV0aF91c2VyX2lkcQRLAXUu\n"
+        }
+    },
+    {
+        "pk": "f8966dc242cc15a1281412ac07d0e0db",
+        "model": "sessions.session",
+        "fields": {
+            "expire_date": "2014-02-14T13:33:24.664Z",
+            "session_data": "MjcwOGQ1YjViODMxOTM3YTg1MmQ4OTc3NWQyODJiYjBjYzhlN2RiZjqAAn1xAShVEl9hdXRoX3Vz\nZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHED\nVQ1fYXV0aF91c2VyX2lkcQRLAXUu\n"
+        }
+    },
+    {
+        "pk": "cc76f561f80a7524162da2ae29d8280b",
+        "model": "sessions.session",
+        "fields": {
+            "expire_date": "2014-02-14T14:08:19.935Z",
+            "session_data": "MjcwOGQ1YjViODMxOTM3YTg1MmQ4OTc3NWQyODJiYjBjYzhlN2RiZjqAAn1xAShVEl9hdXRoX3Vz\nZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHED\nVQ1fYXV0aF91c2VyX2lkcQRLAXUu\n"
+        }
+    },
+    {
+        "pk": "849339a4e0d3658ad778b5bb95972fc4",
+        "model": "sessions.session",
+        "fields": {
+            "expire_date": "2014-02-18T16:05:30.598Z",
+            "session_data": "MjcwOGQ1YjViODMxOTM3YTg1MmQ4OTc3NWQyODJiYjBjYzhlN2RiZjqAAn1xAShVEl9hdXRoX3Vz\nZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHED\nVQ1fYXV0aF91c2VyX2lkcQRLAXUu\n"
+        }
+    },
+    {
+        "pk": "4b7e94601654a5421dbdd0269c68035f",
+        "model": "sessions.session",
+        "fields": {
+            "expire_date": "2014-02-18T16:06:07.868Z",
+            "session_data": "MjcwOGQ1YjViODMxOTM3YTg1MmQ4OTc3NWQyODJiYjBjYzhlN2RiZjqAAn1xAShVEl9hdXRoX3Vz\nZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHED\nVQ1fYXV0aF91c2VyX2lkcQRLAXUu\n"
+        }
+    },
+    {
+        "pk": "f659072d4818acb0be2cd7cb1c9f726e",
+        "model": "sessions.session",
+        "fields": {
+            "expire_date": "2014-02-18T16:41:34.267Z",
+            "session_data": "NGYzNzJiMGZiYjYzNmE1NTg2YTY0YTYyM2I4MDdlMDZlODM0Mzc2MDqAAn1xAS4=\n"
+        }
+    },
+    {
+        "pk": "df5a3993a748bd68575f03332a64f83a",
+        "model": "sessions.session",
+        "fields": {
+            "expire_date": "2014-02-18T16:49:50.933Z",
+            "session_data": "NGYzNzJiMGZiYjYzNmE1NTg2YTY0YTYyM2I4MDdlMDZlODM0Mzc2MDqAAn1xAS4=\n"
+        }
+    },
+    {
+        "pk": "36235c23d6589dd42e940d62671c3f91",
+        "model": "sessions.session",
+        "fields": {
+            "expire_date": "2014-02-18T16:50:06.668Z",
+            "session_data": "MjcwOGQ1YjViODMxOTM3YTg1MmQ4OTc3NWQyODJiYjBjYzhlN2RiZjqAAn1xAShVEl9hdXRoX3Vz\nZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHED\nVQ1fYXV0aF91c2VyX2lkcQRLAXUu\n"
+        }
+    },
+    {
+        "pk": "f705ca0a62ea094d026ff4049e1c7ebb",
+        "model": "sessions.session",
+        "fields": {
+            "expire_date": "2014-02-18T16:50:18.513Z",
+            "session_data": "MjcwOGQ1YjViODMxOTM3YTg1MmQ4OTc3NWQyODJiYjBjYzhlN2RiZjqAAn1xAShVEl9hdXRoX3Vz\nZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHED\nVQ1fYXV0aF91c2VyX2lkcQRLAXUu\n"
+        }
+    },
+    {
+        "pk": "bccc7c9517ccc50e12cf050ad322a0cb",
+        "model": "sessions.session",
+        "fields": {
+            "expire_date": "2014-02-25T21:31:43.054Z",
+            "session_data": "MjcwOGQ1YjViODMxOTM3YTg1MmQ4OTc3NWQyODJiYjBjYzhlN2RiZjqAAn1xAShVEl9hdXRoX3Vz\nZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHED\nVQ1fYXV0aF91c2VyX2lkcQRLAXUu\n"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "sites.site",
+        "fields": {
+            "domain": "example.com",
+            "name": "example.com"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "theme.market",
+        "fields": {
+            "path_script": "market/vs.txt",
+            "title": "market1"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "theme.market",
+        "fields": {
+            "path_script": "market/vs_1.txt",
+            "title": "market2"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "theme.market",
+        "fields": {
+            "path_script": "market/vs_2.txt",
+            "title": "market3"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "theme.engine",
+        "fields": {
+            "package_template_name": "com.justtestit.",
+            "path_source": "source/remember-template.zip",
+            "path_info_appdf": "info_appdf/appdf_2.txt",
+            "path_script_asset": "script_asset/bogtest_copy_2_2.py",
+            "pass_sertificate": "qwerty",
+            "path_script_res": "script_res/bogtest_copy_2.py",
+            "path_script_screen": "script_screen/bogtest_2.py",
+            "path_sertificate": "sertificate/rememberbrain",
+            "name": "Just test it"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "theme.engine",
+        "fields": {
+            "package_template_name": "com.ditbog.",
+            "path_source": "source/memoria-template.zip",
+            "path_info_appdf": "info_appdf/appdf_1.txt",
+            "path_script_asset": "script_asset/bogtest_copy_2_1.py",
+            "pass_sertificate": "qwerty",
+            "path_script_res": "script_res/bogtest_copy_1.py",
+            "path_script_screen": "script_screen/bogtest_1.py",
+            "path_sertificate": "sertificate/mindexplosion",
+            "name": "DITBOG test"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "theme.engine",
+        "fields": {
+            "package_template_name": "com.bogtest.",
+            "path_source": "source/puzzle-template.zip",
+            "path_info_appdf": "info_appdf/appdf.txt",
+            "path_script_asset": "script_asset/bogtest_copy_2.py",
+            "pass_sertificate": "qwerty",
+            "path_script_res": "script_res/bogtest_copy.py",
+            "path_script_screen": "script_screen/bogtest.py",
+            "path_sertificate": "sertificate/cyberbane",
+            "name": "Bog test engine"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "theme.language",
+        "fields": {
+            "name_short": "en",
+            "name_long": "English"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "theme.language",
+        "fields": {
+            "name_short": "uk",
+            "name_long": "Ukrainian"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "theme.language",
+        "fields": {
+            "name_short": "ru",
+            "name_long": "Russian"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "theme.templatedescription",
+        "fields": {
+            "engine": 1,
+            "template_description": "Bog test enblish desc",
+            "language": 2
+        }
+    },
+    {
+        "pk": 2,
+        "model": "theme.templatedescription",
+        "fields": {
+            "engine": 1,
+            "template_description": "BTE U",
+            "language": 3
+        }
+    },
+    {
+        "pk": 3,
+        "model": "theme.templatedescription",
+        "fields": {
+            "engine": 1,
+            "template_description": "BTE R",
+            "language": 4
+        }
+    },
+    {
+        "pk": 4,
+        "model": "theme.templatedescription",
+        "fields": {
+            "engine": 2,
+            "template_description": "DT U",
+            "language": 3
+        }
+    },
+    {
+        "pk": 5,
+        "model": "theme.templatedescription",
+        "fields": {
+            "engine": 2,
+            "template_description": "DT E",
+            "language": 2
+        }
+    },
+    {
+        "pk": 6,
+        "model": "theme.templatedescription",
+        "fields": {
+            "engine": 3,
+            "template_description": "JTI R",
+            "language": 4
+        }
+    },
+    {
+        "pk": 7,
+        "model": "theme.templatedescription",
+        "fields": {
+            "engine": 3,
+            "template_description": "JTI E",
+            "language": 2
+        }
+    },
+    {
+        "pk": 11,
+        "model": "theme.theme",
+        "fields": {
+            "engine": 1,
+            "date_add": "2014-01-20T21:41:02.623Z",
+            "path_to_apk": "",
+            "ad_code": "",
+            "package_name": "com.bogtest.mig27test",
+            "title": "MIG-27 test",
+            "path_asset_folder": "",
+            "version": "1.2",
+            "path_res_folder": "res/default.zip"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "theme.theme",
+        "fields": {
+            "engine": 2,
+            "date_add": "2014-01-21T14:14:10.440Z",
+            "path_to_apk": "apk/default.apk",
+            "ad_code": "",
+            "package_name": "com.ditbog.testjust",
+            "title": "Test Just",
+            "path_asset_folder": "asset/default.zip",
+            "version": "1.2",
+            "path_res_folder": ""
+        }
+    },
+    {
+        "pk": 13,
+        "model": "theme.theme",
+        "fields": {
+            "engine": 3,
+            "date_add": "2014-01-20T21:41:33.040Z",
+            "path_to_apk": "apk/default.apk",
+            "ad_code": "",
+            "package_name": "com.justtestit.cows",
+            "title": "Cows",
+            "path_asset_folder": "asset/default.zip",
+            "version": "1.2",
+            "path_res_folder": "res/default.zip"
+        }
+    },
+    {
+        "pk": 16,
+        "model": "theme.theme",
+        "fields": {
+            "engine": 2,
+            "date_add": "2014-02-11T21:32:19.324Z",
+            "path_to_apk": "",
+            "ad_code": "",
+            "package_name": "com.ditbog.asd",
+            "title": "asd",
+            "path_asset_folder": "",
+            "version": "1.0",
+            "path_res_folder": ""
+        }
+    },
+    {
+        "pk": 14,
+        "model": "theme.theme",
+        "fields": {
+            "engine": 3,
+            "date_add": "2014-01-20T21:41:41.300Z",
+            "path_to_apk": "apk/default.apk",
+            "ad_code": "000000000",
+            "package_name": "com.justtestit.somegames",
+            "title": "Some games",
+            "path_asset_folder": "asset/default.zip",
+            "version": "1.3",
+            "path_res_folder": "res/default.zip"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "theme.theme",
+        "fields": {
+            "engine": 3,
+            "date_add": "2014-01-20T21:41:16.712Z",
+            "path_to_apk": "apk/default.apk",
+            "ad_code": "000000000",
+            "package_name": "com.justtestit.oncemoretest",
+            "title": "Once more test",
+            "path_asset_folder": "asset/default.zip",
+            "version": "2.9",
+            "path_res_folder": "res/default.zip"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "theme.description",
+        "fields": {
+            "path_large_promo": "large_promo/map1.jpg",
+            "language": 2,
+            "path_short_description": "short_description/vs.txt",
+            "title": "SG title",
+            "path_full_description": "full_description/vs.txt",
+            "path_screens_folder": "screens_folder/map4.jpg",
+            "theme": 14,
+            "keywords": "kw1, kw2",
+            "path_app_icon": "app_icon/ic_launcher.png",
+            "feathures": "-</feathure><feathure>-</feathure><feathure>-"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "theme.description",
+        "fields": {
+            "path_large_promo": "large_promo/map1_1.jpg",
+            "language": 4,
+            "path_short_description": "short_description/vs_1.txt",
+            "title": "title 2",
+            "path_full_description": "full_description/vs_1.txt",
+            "path_screens_folder": "screens_folder/map10.jpg",
+            "theme": 14,
+            "keywords": "kw2, kw2",
+            "path_app_icon": "app_icon/ic_launcher_1.png",
+            "feathures": "-</feathure><feathure>-</feathure><feathure>-"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "mail.mail",
+        "fields": {
+            "login": "digintmobile@gmail.com",
+            "password": "RGBkf,jhfnjhbz2012",
+            "last_check": "2014-02-11T23:34:49.691Z",
+            "server": "google"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "mail.mail",
+        "fields": {
+            "login": "billgamecorp@gmail.com",
+            "password": "RGBkf,jhfnjhbz2012",
+            "last_check": "2014-02-11T23:36:42.391Z",
+            "server": "google"
+        }
+    },
+    {
+        "pk": 19,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_logentry",
+            "name": "Can add log entry",
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 20,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_logentry",
+            "name": "Can change log entry",
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 21,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_logentry",
+            "name": "Can delete log entry",
+            "content_type": 7
+        }
+    },
+    {
+        "pk": 4,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_group",
+            "name": "Can add group",
+            "content_type": 2
+        }
+    },
+    {
+        "pk": 5,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_group",
+            "name": "Can change group",
+            "content_type": 2
+        }
+    },
+    {
+        "pk": 6,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_group",
+            "name": "Can delete group",
+            "content_type": 2
+        }
+    },
+    {
+        "pk": 1,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_permission",
+            "name": "Can add permission",
+            "content_type": 1
+        }
+    },
+    {
+        "pk": 2,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_permission",
+            "name": "Can change permission",
+            "content_type": 1
+        }
+    },
+    {
+        "pk": 3,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_permission",
+            "name": "Can delete permission",
+            "content_type": 1
+        }
+    },
+    {
+        "pk": 7,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_user",
+            "name": "Can add user",
+            "content_type": 3
+        }
+    },
+    {
+        "pk": 8,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_user",
+            "name": "Can change user",
+            "content_type": 3
+        }
+    },
+    {
+        "pk": 9,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_user",
+            "name": "Can delete user",
+            "content_type": 3
+        }
+    },
+    {
+        "pk": 10,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_contenttype",
+            "name": "Can add content type",
+            "content_type": 4
+        }
+    },
+    {
+        "pk": 11,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_contenttype",
+            "name": "Can change content type",
+            "content_type": 4
+        }
+    },
+    {
+        "pk": 12,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_contenttype",
+            "name": "Can delete content type",
+            "content_type": 4
+        }
+    },
+    {
+        "pk": 46,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_mail",
+            "name": "Can add mail",
+            "content_type": 16
+        }
+    },
+    {
+        "pk": 47,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_mail",
+            "name": "Can change mail",
+            "content_type": 16
+        }
+    },
+    {
+        "pk": 48,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_mail",
+            "name": "Can delete mail",
+            "content_type": 16
+        }
+    },
+    {
+        "pk": 49,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_marketengine",
+            "name": "Can add market engine",
+            "content_type": 17
+        }
+    },
+    {
+        "pk": 50,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_marketengine",
+            "name": "Can change market engine",
+            "content_type": 17
+        }
+    },
+    {
+        "pk": 51,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_marketengine",
+            "name": "Can delete market engine",
+            "content_type": 17
+        }
+    },
+    {
+        "pk": 52,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_message",
+            "name": "Can add message",
+            "content_type": 18
+        }
+    },
+    {
+        "pk": 53,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_message",
+            "name": "Can change message",
+            "content_type": 18
+        }
+    },
+    {
+        "pk": 54,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_message",
+            "name": "Can delete message",
+            "content_type": 18
+        }
+    },
+    {
+        "pk": 13,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_session",
+            "name": "Can add session",
+            "content_type": 5
+        }
+    },
+    {
+        "pk": 14,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_session",
+            "name": "Can change session",
+            "content_type": 5
+        }
+    },
+    {
+        "pk": 15,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_session",
+            "name": "Can delete session",
+            "content_type": 5
+        }
+    },
+    {
+        "pk": 16,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_site",
+            "name": "Can add site",
+            "content_type": 6
+        }
+    },
+    {
+        "pk": 17,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_site",
+            "name": "Can change site",
+            "content_type": 6
+        }
+    },
+    {
+        "pk": 18,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_site",
+            "name": "Can delete site",
+            "content_type": 6
+        }
+    },
+    {
+        "pk": 40,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_description",
+            "name": "Can add description",
+            "content_type": 14
+        }
+    },
+    {
+        "pk": 41,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_description",
+            "name": "Can change description",
+            "content_type": 14
+        }
+    },
+    {
+        "pk": 42,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_description",
+            "name": "Can delete description",
+            "content_type": 14
+        }
+    },
+    {
+        "pk": 25,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_engine",
+            "name": "Can add engine",
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 26,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_engine",
+            "name": "Can change engine",
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 27,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_engine",
+            "name": "Can delete engine",
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 31,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_language",
+            "name": "Can add language",
+            "content_type": 11
+        }
+    },
+    {
+        "pk": 32,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_language",
+            "name": "Can change language",
+            "content_type": 11
+        }
+    },
+    {
+        "pk": 33,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_language",
+            "name": "Can delete language",
+            "content_type": 11
+        }
+    },
+    {
+        "pk": 22,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_market",
+            "name": "Can add market",
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 23,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_market",
+            "name": "Can change market",
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 24,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_market",
+            "name": "Can delete market",
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 34,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_templatedescription",
+            "name": "Can add template description",
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 35,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_templatedescription",
+            "name": "Can change template description",
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 36,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_templatedescription",
+            "name": "Can delete template description",
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 37,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_theme",
+            "name": "Can add theme",
+            "content_type": 13
+        }
+    },
+    {
+        "pk": 38,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_theme",
+            "name": "Can change theme",
+            "content_type": 13
+        }
+    },
+    {
+        "pk": 39,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_theme",
+            "name": "Can delete theme",
+            "content_type": 13
+        }
+    },
+    {
+        "pk": 43,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "add_thememarket",
+            "name": "Can add theme market",
+            "content_type": 15
+        }
+    },
+    {
+        "pk": 44,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "change_thememarket",
+            "name": "Can change theme market",
+            "content_type": 15
+        }
+    },
+    {
+        "pk": 45,
+        "model": "auth.permission",
+        "fields": {
+            "codename": "delete_thememarket",
+            "name": "Can delete theme market",
+            "content_type": 15
+        }
+    },
+    {
+        "pk": 1,
+        "model": "auth.user",
+        "fields": {
+            "username": "detonavomek",
+            "first_name": "",
+            "last_name": "",
+            "is_active": true,
+            "is_superuser": true,
+            "is_staff": true,
+            "last_login": "2014-02-11T21:31:43.050Z",
+            "groups": [],
+            "user_permissions": [],
+            "password": "pbkdf2_sha256$10000$lr57wxHXPpkG$8SQY26RbXZiPHP8o+3X0AXx6VxXuoOb3FKz6Pmlibn8=",
+            "email": "detonavomek@gmail.com",
+            "date_joined": "2014-01-16T03:34:07.065Z"
+        }
+    },
+    {
+        "pk": 62,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-02-11T23:36:42.392Z",
+            "object_repr": "billgamecorp@gmail.com google",
+            "object_id": "2",
+            "change_message": "",
+            "user": 1,
+            "content_type": 16
+        }
+    },
+    {
+        "pk": 61,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-02-11T23:34:49.740Z",
+            "object_repr": "digintmobile@gmail.com google",
+            "object_id": "1",
+            "change_message": "",
+            "user": 1,
+            "content_type": 16
+        }
+    },
+    {
+        "pk": 60,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-02-11T23:33:41.462Z",
+            "object_repr": "market3",
+            "object_id": "3",
+            "change_message": "",
+            "user": 1,
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 59,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-02-11T23:33:34.500Z",
+            "object_repr": "market2",
+            "object_id": "2",
+            "change_message": "",
+            "user": 1,
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 58,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-02-11T23:33:25.743Z",
+            "object_repr": "market1",
+            "object_id": "1",
+            "change_message": "",
+            "user": 1,
+            "content_type": 8
+        }
+    },
+    {
+        "pk": 57,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-02-11T22:32:06.652Z",
+            "object_repr": "Some games Just test it title 2",
+            "object_id": "2",
+            "change_message": "",
+            "user": 1,
+            "content_type": 14
+        }
+    },
+    {
+        "pk": 56,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-02-11T22:30:40.192Z",
+            "object_repr": "Some games Just test it SG title",
+            "object_id": "1",
+            "change_message": "",
+            "user": 1,
+            "content_type": 14
+        }
+    },
+    {
+        "pk": 55,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 3,
+            "action_time": "2014-01-20T21:38:22.835Z",
+            "object_repr": "test1 Just test it",
+            "object_id": "2",
+            "change_message": "",
+            "user": 1,
+            "content_type": 13
+        }
+    },
+    {
+        "pk": 54,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 3,
+            "action_time": "2014-01-20T21:38:22.830Z",
+            "object_repr": "Test 2 Bog test engine",
+            "object_id": "3",
+            "change_message": "",
+            "user": 1,
+            "content_type": 13
+        }
+    },
+    {
+        "pk": 53,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 3,
+            "action_time": "2014-01-20T21:38:22.827Z",
+            "object_repr": "New test Bog test engine",
+            "object_id": "4",
+            "change_message": "",
+            "user": 1,
+            "content_type": 13
+        }
+    },
+    {
+        "pk": 52,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 3,
+            "action_time": "2014-01-20T21:37:58.685Z",
+            "object_repr": "test 4 Bog test engine",
+            "object_id": "5",
+            "change_message": "",
+            "user": 1,
+            "content_type": 13
+        }
+    },
+    {
+        "pk": 51,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 3,
+            "action_time": "2014-01-20T21:37:58.684Z",
+            "object_repr": "new theme Just test it",
+            "object_id": "6",
+            "change_message": "",
+            "user": 1,
+            "content_type": 13
+        }
+    },
+    {
+        "pk": 50,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 3,
+            "action_time": "2014-01-20T21:37:58.683Z",
+            "object_repr": "once more DITBOG test",
+            "object_id": "7",
+            "change_message": "",
+            "user": 1,
+            "content_type": 13
+        }
+    },
+    {
+        "pk": 49,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 3,
+            "action_time": "2014-01-20T21:37:58.681Z",
+            "object_repr": "pack name test Just test it",
+            "object_id": "8",
+            "change_message": "",
+            "user": 1,
+            "content_type": 13
+        }
+    },
+    {
+        "pk": 48,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 3,
+            "action_time": "2014-01-20T21:37:58.677Z",
+            "object_repr": "ditbog pnt DITBOG test",
+            "object_id": "9",
+            "change_message": "",
+            "user": 1,
+            "content_type": 13
+        }
+    },
+    {
+        "pk": 47,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 3,
+            "action_time": "2014-01-20T21:37:58.674Z",
+            "object_repr": "MIG-27 inside Bog test engine",
+            "object_id": "10",
+            "change_message": "",
+            "user": 1,
+            "content_type": 13
+        }
+    },
+    {
+        "pk": 46,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-01-20T21:25:58.650Z",
+            "object_repr": "Bog test engine",
+            "object_id": "1",
+            "change_message": "\u0418\u0437\u043c\u0435\u043d\u0435\u043d package_template_name.",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 45,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-01-20T21:25:51.304Z",
+            "object_repr": "DITBOG test",
+            "object_id": "2",
+            "change_message": "\u0418\u0437\u043c\u0435\u043d\u0435\u043d package_template_name.",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 44,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2014-01-20T21:25:44.207Z",
+            "object_repr": "Just test it",
+            "object_id": "3",
+            "change_message": "\u0418\u0437\u043c\u0435\u043d\u0435\u043d package_template_name.",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 15,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-01-17T23:20:56.635Z",
+            "object_repr": "English Just test it",
+            "object_id": "7",
+            "change_message": "",
+            "user": 1,
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 14,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-01-17T23:20:43.891Z",
+            "object_repr": "Russian Just test it",
+            "object_id": "6",
+            "change_message": "",
+            "user": 1,
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 13,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-01-17T23:20:32.602Z",
+            "object_repr": "English DITBOG test",
+            "object_id": "5",
+            "change_message": "",
+            "user": 1,
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 12,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-01-17T23:20:24.548Z",
+            "object_repr": "Ukrainian DITBOG test",
+            "object_id": "4",
+            "change_message": "",
+            "user": 1,
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 11,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-01-17T23:20:12.268Z",
+            "object_repr": "Russian Bog test engine",
+            "object_id": "3",
+            "change_message": "",
+            "user": 1,
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 10,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-01-17T23:20:02.582Z",
+            "object_repr": "Ukrainian Bog test engine",
+            "object_id": "2",
+            "change_message": "",
+            "user": 1,
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 9,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-01-17T23:19:33.518Z",
+            "object_repr": "English Bog test engine",
+            "object_id": "1",
+            "change_message": "",
+            "user": 1,
+            "content_type": 12
+        }
+    },
+    {
+        "pk": 8,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 3,
+            "action_time": "2014-01-17T23:19:01.309Z",
+            "object_repr": "dvsde",
+            "object_id": "1",
+            "change_message": "",
+            "user": 1,
+            "content_type": 11
+        }
+    },
+    {
+        "pk": 7,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-01-17T23:18:52.053Z",
+            "object_repr": "Russian",
+            "object_id": "4",
+            "change_message": "",
+            "user": 1,
+            "content_type": 11
+        }
+    },
+    {
+        "pk": 6,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-01-17T23:18:44.783Z",
+            "object_repr": "Ukrainian",
+            "object_id": "3",
+            "change_message": "",
+            "user": 1,
+            "content_type": 11
+        }
+    },
+    {
+        "pk": 5,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-01-17T21:44:50.490Z",
+            "object_repr": "Just test it",
+            "object_id": "3",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 4,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-01-17T21:41:14.790Z",
+            "object_repr": "DITBOG test",
+            "object_id": "2",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 3,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-01-17T21:38:21.086Z",
+            "object_repr": "Bog test engine",
+            "object_id": "1",
+            "change_message": "",
+            "user": 1,
+            "content_type": 9
+        }
+    },
+    {
+        "pk": 2,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-01-17T03:05:26.276Z",
+            "object_repr": "English",
+            "object_id": "2",
+            "change_message": "",
+            "user": 1,
+            "content_type": 11
+        }
+    },
+    {
+        "pk": 1,
+        "model": "admin.logentry",
+        "fields": {
+            "action_flag": 1,
+            "action_time": "2014-01-16T04:53:31.591Z",
+            "object_repr": "Language object",
+            "object_id": "1",
+            "change_message": "",
+            "user": 1,
+            "content_type": 11
+        }
+    }
+]
