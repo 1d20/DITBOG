@@ -7,7 +7,7 @@ from utils.decorators import render_to
 from scripts import controller
 from utils import template_folders
 import base64 as kostul
-from ditbog.settings import MEDIA_ROOT
+from source.settings import MEDIA_ROOT
 
 @login_required
 @render_to('theme/themes.html')

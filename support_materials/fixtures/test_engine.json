@@ -1,19 +1,5 @@
 [{
     "fields": {
-        "name_short": "en",
-        "name_long": "English"
-    },
-    "model": "theme.language",
-    "pk": 1
-}, {
-    "fields": {
-        "name_short": "ru",
-        "name_long": "\u0420\u0443\u0441\u0441\u043a\u0438\u0439"
-    },
-    "model": "theme.language",
-    "pk": 2
-}, {
-    "fields": {
         "engine": 1,
         "template_description": "This app will show you cool picture =)\r\nHope you like it =)",
         "language": 1

@@ -1,7 +1,7 @@
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-SECRET_KEY = '9ul+)$_x5a=@qhf9neab6bdy!_rf@6jlq5=&a7ldpkygpjp00g'
+SECRET_KEY = '9ul+)$_x5a=@qhf9npab6bdy!_rf@6jlq5=&a7ldpkygpjp01g'
 
 DEBUG = True
 TEMPLATE_DEBUG = True
@@ -33,26 +33,21 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'ditbog.urls'
+ROOT_URLCONF = 'source.urls'
 
-WSGI_APPLICATION = 'ditbog.wsgi.application'
+WSGI_APPLICATION = 'source.wsgi.application'
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'ditbog.db'),
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

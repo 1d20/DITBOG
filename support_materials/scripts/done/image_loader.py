@@ -4,9 +4,6 @@ from contextlib import closing
 
 thread_count = 5
 engineID = 'ditbog_engine'
-# theme_name = 'Health'
-# out_folder_path = '/Users/Detonavomek/Documents/Python_projects/Django/ditbog/support_scripts/'
-# out_folder_name = 'out_folder'
 
 def downloadFromUrl(url, out_folder, i):
 	urllib.urlretrieve(url, out_folder+str(i)+'.png')

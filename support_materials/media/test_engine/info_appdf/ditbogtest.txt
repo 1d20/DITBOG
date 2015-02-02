@@ -1,4 +1,4 @@
-package:com.ditbogtest.
+package:com.aoktest.
 type:game
 category:Other
 subcategory:-

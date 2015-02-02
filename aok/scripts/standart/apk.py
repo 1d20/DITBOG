@@ -76,7 +76,7 @@ def generate_sources(theme_object, tmp_dir):
 
 	#application name
 	#doto
-	old = '<string name="app_name">ditbogtest</string>'
+	old = '<string name="app_name">aoktest</string>'
 	descriptions = Description.objects.filter(theme=theme_object)
 	for desc in descriptions:
 		lang = desc.language.name_short
