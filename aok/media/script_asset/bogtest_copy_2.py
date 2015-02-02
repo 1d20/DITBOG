@@ -1,1 +1,0 @@
-print ‘bog test asset’
