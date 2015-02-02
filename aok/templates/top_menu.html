@@ -1,0 +1,21 @@
+<img src="/static/images/logo.png" width="200px" height="40px" class="col-lg-2"/>
+<div class="col-lg-9">
+    <ul class="nav nav-pills">
+        <li class="{% if active_page == 'themes' %}active{% endif %}">
+            <a href="/theme/themes/">Themes</a>
+        </li>
+        <li class="{% if active_page == 'mails' %}active{% endif %}">
+            <a href="/mail/mails/">Mails <span class="badge">3</span></a>
+        </li>
+        <li class="{% if active_page == 'add_theme' %}active{% endif %}">
+            <a href="/theme/add/">Add theme</a>
+        </li>
+    </ul>
+</div>
+<div class="col-lg-1">
+    <ul class="nav nav-pills">
+        <li>
+            <a href="/">Exit</a>
+        </li>
+    </ul>
+</div>

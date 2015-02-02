@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content  %}
+
+{% include "themes/left_menu.html" %}
+<div class="col-lg-7">
+    <br/>
+    <button id="btn_vers" type="button" class="btn btn-primary btn-sm">Vers++</button>
+    <button id="btn_desc" type="button" class="btn btn-primary btn-sm">Desc All</button>
+    <button id="btn_res" type="button" class="btn btn-primary btn-sm">Res</button>
+    <button id="btn_asset" type="button" class="btn btn-primary btn-sm">Asset</button>
+    <button id="btn_adv" type="button" class="btn btn-primary btn-sm">Adv</button>
+    <button id="btn_apk" type="button" class="btn btn-primary btn-sm">Apk</button>
+    <button id="btn_all" type="button" class="btn btn-primary btn-sm">All</button>
+    <button id="btn_market" type="button" class="btn btn-primary btn-sm">Market load</button>
+</div>
+
+<div class="table-responsive col-lg-10">
+    <br/>
+    <table id="my_table" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th><input type="checkbox" id="0" /></th>
+            <th>Title</th>
+            <th>Vers</th>
+            <th>Pack name</th>
+            <th>Desc</th>
+            <th>Res</th>
+            <th>Asset</th>
+            <th>Adv</th>
+            <th>Apk</th>
+            <th>Markets</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for theme in themes %}
+    {% if theme.engine.id == active_engine or active_engine == 0 %}
+        <tr>
+            <td><input type="checkbox" id="{{ theme.id }}" /></td>
+            <td><a href="/theme/show/{{ theme.id }}/">{{ theme.title }}</a></td>
+            <td>{{ theme.version }}</td>
+            <td>{{ theme.package_name }}</td>
+            <td><img src="/static/images/{% if theme.description_theme.all|length %}yes{% else %}no{% endif %}.png" width="22px" height="22px"/></td>
+            <td><img src="/static/images/{% if theme.path_res_folder %}yes{% else %}no{% endif %}.png" width="22px" height="22px"/></td>
+            <td><img src="/static/images/{% if theme.path_asset_folder %}yes{% else %}no{% endif %}.png" width="22px" height="22px"/></td>
+            <td><img src="/static/images/{% if theme.themead_theme.all|length %}yes{% else %}no{% endif %}.png" width="22px" height="22px"/>
+            </td>
+            <td><img src="/static/images/no.png" width="22px" height="22px"/></td>
+            <td>0(0)</td>
+            <td>{{ theme.date_add|date:'d.m.y h:i:s' }}</td>
+        </tr>
+    {% endif %}
+    {% endfor %}
+    </tbody>
+    </table>
+    <form id="form_to_send" method="post" action="/theme/change/">
+        {% csrf_token %}
+    </form>
+
+<script type="text/javascript">
+function post_to_url(params)
+{
+    var form = document.getElementById("form_to_send");
+
+    for(var key in params)
+    {
+        if(params.hasOwnProperty(key))
+        {
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", key);
+            hiddenField.setAttribute("value", params[key]);
+
+            form.appendChild(hiddenField);
+        }
+    }
+
+    form.submit();
+}
+
+function GetCheckedCheckboxArray()
+{
+    var data = "";
+    var inputs = document.querySelectorAll("input[type=checkbox]");
+    for (var i = 0; i < inputs.length; i++)
+    {
+        if(inputs[i].checked)
+            data += inputs[i].id + ";";
+    }
+    return data.substring(0, data.length-1);
+}
+
+function PostData(sender)
+{
+    var selected = GetCheckedCheckboxArray();
+    if(selected == "")
+    {
+        alert("empty");
+        return;
+    }
+
+    var params = new Array();
+    params["sender"] = sender;
+    params["selected"] = selected;
+
+    post_to_url(params);
+}
+
+(function()
+ {//для btn_vers працює, для інших - ні
+    document.getElementById("btn_vers").onclick = function () { PostData("btn_vers"); };
+    document.getElementById("btn_desc").onclick = function () { PostData("btn_desc"); };
+    document.getElementById("btn_res").onclick = function () { PostData("btn_res"); };
+    document.getElementById("btn_asset").onclick = function () { PostData("btn_asset"); };
+    document.getElementById("btn_adv").onclick = function () { PostData("btn_adv"); };
+    document.getElementById("btn_apk").onclick = function () { PostData("btn_apk"); };
+    document.getElementById("btn_all").onclick = function () { PostData("btn_all"); };
+    document.getElementById("btn_market").onclick = function () { PostData("btn_market"); };
+ }
+)();
+</script>
+</div>
+<script type="text/javascript" src="/static/js/jquery.js" charset="utf-8"></script>
+        <script type="text/javascript" src="/static/js/jquery.dataTables.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+
+            $(document).ready(function() {
+            $('#my_table').dataTable({
+            "bStateSave" : true,
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers"});
+            } );
+            </script>
+
+{% endblock %}
+
+<script type="text/javascript">
+function post_to_url(params)
+{
+    var form = document.getElementById("form_to_send");
+
+    for(var key in params)
+    {
+        if(params.hasOwnProperty(key))
+        {
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", key);
+            hiddenField.setAttribute("value", params[key]);
+            alert(key + ":" + params[key]);
+            form.appendChild(hiddenField);
+        }
+    }
+
+    form.submit();
+}
+
+function GetCheckedCheckboxArray()
+{
+    var data = "";
+    var inputs = document.querySelectorAll("input[type=checkbox]");
+    for (var i = 0; i < inputs.length; i++)
+    {
+        if(inputs[i].checked)
+            data += inputs[i].id + ";";
+    }
+    return data.substring(0, data.length-1);
+}
+
+function PostData(sender)
+{
+    var selected = GetCheckedCheckboxArray();
+    if(selected == "")
+    {
+        alert("empty");
+        return;
+    }
+
+    var params = new Array();
+    params["sender"] = sender;
+    params["selected"] = selected;
+
+    post_to_url(params);
+}
+
+(function()
+ {
+    document.getElementById('btn_verspp').onclick = function () { PostData("btn_verspp"); };
+    document.getElementById('btn_icon').onclick = function () { PostData("btn_icon"); };
+
+ }
+)();
+</script>

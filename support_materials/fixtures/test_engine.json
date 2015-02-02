@@ -1,0 +1,23 @@
+[{
+    "fields": {
+        "engine": 1,
+        "template_description": "This app will show you cool picture =)\r\nHope you like it =)",
+        "language": 1
+    },
+    "model": "theme.templatedescription",
+    "pk": 1
+}, {
+    "fields": {
+        "package_template_name": "com.ditbogtest.template",
+        "path_source": "source/com.ditbogtest.template.zip",
+        "path_info_appdf": "info_appdf/ditbogtest.txt",
+        "path_script_asset": "script_asset/ditbogtest.py",
+        "pass_sertificate": "123",
+        "path_script_res": "script_res/ditbogtest.py",
+        "path_script_screen": "script_screen/ditbogtest.py",
+        "path_sertificate": "sertificate/build.txt",
+        "name": "DITBOG test"
+    },
+    "model": "theme.engine",
+    "pk": 1
+}]

@@ -1,0 +1,7 @@
+Django==1.7.3
+Pillow==2.7.0
+imaplib2==2.37.4
+ipdb==0.8
+ipython==2.3.1
+wsgiref==0.1.2
+Fabric==1.10.1
