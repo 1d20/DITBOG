@@ -1,21 +1,21 @@
 __author__ = 'Detonavomek'
-from scripts.standart import version, package_name, resources, assets, advertisement, apk, descriprion
+from apps.utils.apk import package_name, resources, assets, apk, descriprion
 
-def add_version(currentVersion):
-    return version.add_version(currentVersion)
 
-def generate_package_name(templatePackageName, themeTitle):
-    return package_name.generate_package_name(templatePackageName, themeTitle)
+def add_version(current_version):
+    return str(float(current_version)+0.1)
+
+
+def generate_package_name(template_packagename, theme_title):
+    return package_name.generate_package_name(template_packagename, theme_title)
+
 
 def generate_res(theme_object, parent_path, path_to_script, path_to_out_folder):
     return resources.generate_res(theme_object, parent_path, path_to_script, path_to_out_folder)
 
+
 def generate_asset(theme_object, parent_path, path_to_script, path_to_out_folder):
     return assets.generate_asset(theme_object, parent_path, path_to_script, path_to_out_folder)
-
-
-def generate_adv(theme_object, package_name, parent_path, path_info_appdf):
-    return advertisement.generate_advertisement(theme_object, package_name, parent_path, path_info_appdf)
 
 
 def generate_apk(theme_object):

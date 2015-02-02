@@ -20,7 +20,7 @@ INSTALLED_APPS = (
 
     'apps.theme',
     'apps.guest',
-    'utils',
+    'apps.utils',
 )
 
 MIDDLEWARE_CLASSES = (

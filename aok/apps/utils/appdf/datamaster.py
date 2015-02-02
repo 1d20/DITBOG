@@ -1,21 +1,21 @@
-#-*- coding:utf-8 -*-
 from enum import Enum
 
-class YasNo(Enum):
+class YesNo(Enum):
 	yes = "yes"
 	no = "no"
 
 class Content_descriptors:
-	cartoon_violence = YasNo.no
-	realistic_violence = YasNo.no
-	bad_language = YasNo.no
-	fear = YasNo.no
-	sexual_content = YasNo.no
-	drugs = YasNo.no
-	gambling_reference = YasNo.no
-	alcohol = YasNo.no
-	smoking = YasNo.no
-	discrimination = YasNo.no
+	cartoon_violence = YesNo.no
+	realistic_violence = YesNo.no
+	bad_language = YesNo.no
+	fear = YesNo.no
+	sexual_content = YesNo.no
+	drugs = YesNo.no
+	gambling_reference = YesNo.no
+	alcohol = YesNo.no
+	smoking = YesNo.no
+	discrimination = YesNo.no
+
 	def ToXML(self):
 		xml = "<content-descriptors>"
 		xml += "<cartoon-violence>" + cartoon_violence + "</cartoon-violence>"
@@ -32,13 +32,13 @@ class Content_descriptors:
 		return xml
 		
 class Included_activities:
-	in_app_billing = YasNo.no
-	gambling = YasNo.no
-	advertising = YasNo.yes
-	user_generated_content = YasNo.no
-	user_to_user_communications = YasNo.no
-	account_creation = YasNo.no
-	personal_information_collection = YasNo.no
+	in_app_billing = YesNo.no
+	gambling = YesNo.no
+	advertising = YesNo.yes
+	user_generated_content = YesNo.no
+	user_to_user_communications = YesNo.no
+	account_creation = YesNo.no
+	personal_information_collection = YesNo.no
 	def ToXML(self):
 		xml = "<included-activities>"
 		xml += "<in-app-billing>" + in_app_billing + "</in-app-billing>"
@@ -81,11 +81,11 @@ class Categorization:
 		return xml
 		
 class Consent:
-	google_android_content_guidelines = YasNo.yes
-	us_export_laws = YasNo.yes
-	slideme_agreement = YasNo.yes
-	free_from_third_party_copytighted_content = YasNo.yes
-	import_export = YasNo.yes
+	google_android_content_guidelines = YesNo.yes
+	us_export_laws = YesNo.yes
+	slideme_agreement = YesNo.yes
+	free_from_third_party_copytighted_content = YesNo.yes
+	import_export = YesNo.yes
 	def ToXML(self):
 		xml = "<consent>"
 		xml += "<google-android-content-guidelines>" + google_android_content_guidelines + "</google-android-content-guidelines>"
@@ -173,7 +173,7 @@ class DataMaster:
 	description = Description()
 	description_localizations = []
 	content_description = Сontent_description()
-	price = YasNo.yes //free="yes"
+	price = YesNo.yes //free="yes"
 	apk_files = Apk_files()
 	testing_instructions = "Not specified."
 	consent = Consent()

@@ -1,6 +1,3 @@
-#-*- coding:utf-8 -*-
-
-
 def to_packagename(instr):
 	instr = instr.lower()
 	instr = instr.replace(' ','')

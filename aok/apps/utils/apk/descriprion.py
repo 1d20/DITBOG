@@ -1,14 +1,12 @@
-#-*- coding:utf-8 -*-
+from apps.utils.config import template_folders
+
 __author__ = 'Detonavomek'
 
 from apps.theme.models import Description
-from apps.theme.models import Theme
 from apps.theme.models import Language
 from apps.theme.models import TemplateDescription
 
-from utils import template_folders
-
-from utils import utils
+from apps.utils import utils
 
 IDENT = "/{0.engine.name}_{0.title}_"
 
@@ -61,8 +59,6 @@ def __generate_def_desc(theme):
     return en_desc
 
 def generate_desc(theme):
-
-    #theme = Theme.objects.all()[1]    
 
     global IDENT
     IDENT = "/{0.engine.name}_{0.title}_"

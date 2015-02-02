@@ -1,9 +1,6 @@
-#-*- coding:utf-8 -*-
-__author__ = 'Detonavomek'
-#-*- coding:utf-8 -*-
-import os
+from apps.utils.config.template_folders import *
 
-def generate_asset(theme_object, parent_path, path_to_script, path_to_out_folder):
+def generate_res(theme_object, parent_path, path_to_script, path_to_out_folder):
 
     themeTitle = theme_object.title
     engineName = theme_object.engine.name
@@ -16,5 +13,5 @@ def generate_asset(theme_object, parent_path, path_to_script, path_to_out_folder
     request = 'python ' + fullPathToScript + ' ' + fullOutFolderPath + ' ' + themeTitle + ' ' + engineName
     print request
     os.system(request)
-    theme_object.path_asset_folder = path_to_out_folder+'/'+outFileName
+    theme_object.path_res_folder = path_to_out_folder+'/'+outFileName
     return True

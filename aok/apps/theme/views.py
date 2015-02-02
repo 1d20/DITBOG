@@ -1,16 +1,17 @@
-#-*- coding:utf-8 -*-
+import base64
+
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.core.context_processors import csrf
+from django.shortcuts import render
+
 from models import Engine, Theme
-from utils.decorators import render_to
-from scripts import controller
-from utils import template_folders
-import base64 as kostul
+from apps.utils.config import template_folders
+from apps.utils import apk_controller as controller
 from source.settings import MEDIA_ROOT
 
+
 @login_required
-@render_to('theme/themes.html')
 def themes(request, engine_id=0):
     if engine_id == 0:
         title = 'All themes'
@@ -19,20 +20,19 @@ def themes(request, engine_id=0):
         title = Engine.objects.get(id=engine_id).name
         themes = Theme.objects.filter(engine_id = engine_id)
 
-    return { 'active_page':'themes', 'active_engine':int(engine_id), 'engines':Engine.objects.filter(), 'title':title,
-             'themes': themes}
+    return render(request, 'theme/themes.html',
+                  { 'active_page':'themes', 'active_engine':int(engine_id),
+                    'engines':Engine.objects.filter(), 'title':title, 'themes': themes})
 
 @login_required
-@render_to('theme/theme.html')
 def show(request, theme_id=0):
     title=Theme.objects.get(id=theme_id).title
     c = { 'active_page':'themes', 'active_engine':0, 'engines':Engine.objects.filter(), 'title':title,
              'theme':Theme.objects.get(id=theme_id) }
     c.update(csrf(request))
-    return c
+    return render(request, 'theme/theme.html', c)
 
 @login_required
-@render_to('theme/theme_add.html')
 def add(request):
     if request.method == 'POST':
         if len(request.POST['theme']) > 0:
@@ -45,14 +45,13 @@ def add(request):
             return  HttpResponseRedirect('/theme/themes/')
     c = {}
     c.update(csrf(request))
-    return { 'active_page':'add_theme', 'title':'Add theme', 'active_engine':0, 'engines':Engine.objects.filter() }
+    return render(request, 'theme/theme_add.html', { 'active_page':'add_theme', 'title':'Add theme', 'active_engine':0, 'engines':Engine.objects.filter() })
 
 @login_required
-@render_to('theme/themes.html')
 def zip(request, type='nobody'):
     if request.method == 'POST':
         file_content = request.POST['file']
-        file_content = kostul.b64decode(file_content)
+        file_content = base64.b64decode(file_content)
         theme_id = int(request.POST.get('theme_id'))
         theme = Theme.objects.get(id=theme_id)
         f = open(MEDIA_ROOT+'/'+str(theme.path_res_folder), 'w')
@@ -61,7 +60,6 @@ def zip(request, type='nobody'):
     return  HttpResponseRedirect('/theme/themes/')
 
 @login_required
-@render_to('theme/themes.html')
 def change(request):
     action = request.POST['sender']
     themes = request.POST['selected'].split(';')

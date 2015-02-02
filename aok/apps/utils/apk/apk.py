@@ -4,10 +4,10 @@ import os.path
 import shutil
 from subprocess import call
 
-from apps.theme.models import Theme
 from apps.theme.models import Description
-from utils import utils
-from utils import template_folders
+from apps.utils import utils
+from apps.utils.config import template_folders
+
 
 __sdkdir = "/usr/local/lib/AndroidSDK";
 

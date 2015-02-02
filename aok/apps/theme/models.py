@@ -1,6 +1,7 @@
 #-*- coding:utf-8 -*-
 from django.db import models
-from utils import template_folders
+
+from apps.utils.config import template_folders
 
 
 class Market(models.Model):
