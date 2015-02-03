@@ -3,34 +3,28 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block head_ex %}
-<script type="text/javascript" src="/static/zip_viewer/js/lib/jquery-1.8.3.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="/static/zip_viewer/js/lib/jszip.js"></script>
-<script type="text/javascript" src="/static/zip_viewer/js/main.js" charset="utf-8"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-    <script src="http://malsup.github.com/jquery.form.js"></script>
-
-<style>
-	ul {list-style: none;}
-	li {list-style: none;
-		position:relative;
-		max-width: 120px;}
-	.delete-image{
-		position:absolute;
-		width:20px;
-		height: 20px;
-		top:0;
-		right:0;
-		background:red;
-		color:white;
-		display: none;
-	}
-	img { width: 120px;}
-</style>
+    <style>
+        ul {list-style: none;}
+        li {list-style: none;
+            position:relative;
+            max-width: 120px;}
+        .delete-image{
+            position:absolute;
+            width:20px;
+            height: 20px;
+            top:0;
+            right:0;
+            background:red;
+            color:white;
+            display: none;
+        }
+        img { width: 120px;}
+    </style>
 {% endblock %}
 
 {% block content  %}
 
-{% include "themes/left_menu.html" %}
+{% include "theme/elements/left_menu.html" %}
 <div class="table-responsive col-lg-10">
     <p name="theme_id" style="display:none">{{ theme.id }}</p>
     <h1 style="color:WHITE">{{ theme.title }}</h1>
