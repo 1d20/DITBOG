@@ -42,13 +42,10 @@ def edit_description(request, desc_id=0):
     if request.method == 'GET':
         form = DescriptionForm(instance=desc)
     else:
-        form = DescriptionForm(request.POST)
+        form = DescriptionForm(request.POST, instance=desc)
         if form.is_valid():
-            desc.title = form.data['title']
-            desc.keywords = form.data['keywords']
-            desc.feathures = form.data['feathures']
-            desc.save()
-            return HttpResponse({'result': 'ok'}, content_type  ='application/json')
+            form.save()
+            return HttpResponse({'result': 'ok'}, content_type='application/json')
     data = {'form': form, 'desc': desc}
     data.update(csrf(request))
     return render(request, 'theme/elements/description_form.html', data)
