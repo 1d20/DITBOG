@@ -81,8 +81,8 @@
             <div class="panel-body">
                 <h5><b>Title:</b> {{ desc.title }}</h5>
                 <h5><b>Keywords:</b> {{ desc.keywords }}</h5>
-                <h5><b>Short description:</b> {% if desc.path_short_description %}{{ desc.path_short_description.url }}{% endif %}</h5>
-                <h5><b>Full description:</b> {% if desc.path_full_description %}{{ desc.path_full_description.url }}{% endif %}</h5>
+                <h5><b>Short description:</b> {{ desc.view_full_description }}</h5>
+                <h5><b>Full description:</b> {{ desc.view_short_description.url }}</h5>
                 <h5><b>Feathures:</b> {{ desc.feathures }}</h5>
                 <h5><b>Icon:</b></br><img src="{% if desc.path_app_icon %}{{ desc.path_app_icon.url }}{% endif %}"></h5>
                 <h5><b>Large promo:</b></br><img src="{% if desc.path_large_promo %}{{ desc.path_large_promo.url }}{% endif %}"></h5>

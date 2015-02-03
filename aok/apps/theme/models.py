@@ -71,6 +71,18 @@ class Description(models.Model):
     path_large_promo = models.FileField(upload_to=template_folders.UPLOAD_LARGE_PROMO_FOLDER, default=None)
     path_screens_folder = models.FileField(upload_to=template_folders.UPLOAD_SCREENS_FOLDER, default=None)
 
+    def view_full_description(self):
+        if self.path_full_description:
+            with open(self.path_full_description.path, 'r') as f:
+                return f.read()
+        return ''
+
+    def view_short_description(self):
+        if self.path_short_description:
+            with open(self.path_short_description.path, 'r') as f:
+                return f.read()
+        return ''
+
     def __unicode__(self):
         return u'%s : %s' % (self.title, self.theme)
 
