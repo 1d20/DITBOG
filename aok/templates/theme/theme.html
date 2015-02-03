@@ -73,6 +73,7 @@
 
             <div class="panel-heading">
                 <h4>Description:</h4>
+                <div class="alert alert-success show" role="alert">...</div>
             
                 <ul class="nav nav-tabs">
                     {% for desc in theme.description_theme.all %}
@@ -83,7 +84,7 @@
                         {% endif %}
                         
                     {% endfor %}
-                 </ul>
+                </ul>
                 <div class="panel-body">
                     <div class="tab-content">
                     {% for desc in theme.description_theme.all %}
