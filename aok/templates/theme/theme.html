@@ -81,10 +81,10 @@
                             {% csrf_token %}
                             <p><b>Title:</b>
                                 <textarea rows="10" cols="45" name="title">{{ desc.title }}</textarea></p>
-                            <p><b>Keywords:</b><textarea rows="10" cols="45" name="keywords"> {{ desc.keywords }}</textarea></p>
-                            <p><b>Short description:</b><textarea rows="10" cols="45" name="full"> {{ desc.view_full_description }}</textarea></p>
-                            <p><b>Full description:</b><textarea rows="10" cols="45" name="short"> {{ desc.view_short_description }}</textarea></p>
-                            <p><b>Feathures:</b><textarea rows="10" cols="45" name="feathures"> {{ desc.feathures }}</textarea></p>
+                            <p><b>Keywords:</b><textarea rows="10" cols="45" name="keywords">{{ desc.keywords }}</textarea></p>
+                            <p><b>Short description:</b><textarea rows="10" cols="45" name="full">{{ desc.view_full_description }}</textarea></p>
+                            <p><b>Full description:</b><textarea rows="10" cols="45" name="short">{{ desc.view_short_description }}</textarea></p>
+                            <p><b>Feathures:</b><textarea rows="10" cols="45" name="feathures">{{ desc.feathures }}</textarea></p>
                             <p><b>Icon:</b></br><img src="{% if desc.path_app_icon %}{{ desc.path_app_icon.url }}{% endif %}"></p>
                             <p><b>Large promo:</b></br><img src="{% if desc.path_large_promo %}{{ desc.path_large_promo.url }}{% endif %}"></p>
                             <p><b>Screens:</b></br>{% if theme.path_full_description %}{{ desc.path_screens_folder.url }}{% endif %}</p>
