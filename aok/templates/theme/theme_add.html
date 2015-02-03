@@ -7,7 +7,7 @@
 {% include "theme/elements/left_menu.html" %}
 
 <div class="col-lg-6">
-    <form class="form-horizontal" method="post" action="/theme/add/">
+    <form class="form-horizontal" method="post" action="{% url 'theme-add' %}">
         {% csrf_token %}
         <fieldset>
             <legend>Add theme</legend>
