@@ -68,32 +68,41 @@
             <input type="button" value="Assets" data-result-id="2" data-source-url="{{ theme.path_asset_folder.url }}">
         </h5>{% endif %} </div>
     </div>
-    <div class="panel panel-warning">
-        <div class="panel-heading">
-            <h4>Description:</h4>
-        </div>
-        </br>
-        {% for desc in theme.description_theme.all %}
         <div class="panel panel-warning">
             <div class="panel-heading">
-            <h3 class="panel-title">{{ desc.language }}</h3>
+                <h4>Description:</h4>
+                {% for desc in theme.description_theme.all %}
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                    <h3 class="panel-title">{{ desc.language }}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form id="descForm" action="/theme/edit_description/{{ desc.pk }}/" method="post">
+                            {% csrf_token %}
+                            <p><b>Title:</b>
+                                <textarea rows="10" cols="45" name="title">{{ desc.title }}</textarea></p>
+                            <p><b>Keywords:</b><textarea rows="10" cols="45" name="keywords">{{ desc.keywords }}</textarea></p>
+                            <p><b>Short description:</b><textarea rows="10" cols="45" name="full">{{ desc.view_full_description }}</textarea></p>
+                            <p><b>Full description:</b><textarea rows="10" cols="45" name="short">{{ desc.view_short_description }}</textarea></p>
+                            <p><b>Feathures:</b><textarea rows="10" cols="45" name="feathures">{{ desc.feathures }}</textarea></p>
+                            <p><b>Icon:</b></br><img src="{% if desc.path_app_icon %}{{ desc.path_app_icon.url }}{% endif %}"></p>
+                            <p><b>Large promo:</b></br><img src="{% if desc.path_large_promo %}{{ desc.path_large_promo.url }}{% endif %}"></p>
+                            <p><b>Screens:</b></br>{% if theme.path_full_description %}{{ desc.path_screens_folder.url }}{% endif %}</p>
+                            <p><input type="submit" value="Send"></p>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+
             </div>
-            <div class="panel-body">
-                <h5><b>Title:</b> {{ desc.title }}</h5>
-                <h5><b>Keywords:</b> {{ desc.keywords }}</h5>
-                <h5><b>Short description:</b> {{ desc.view_full_description }}</h5>
-                <h5><b>Full description:</b> {{ desc.view_short_description.url }}</h5>
-                <h5><b>Feathures:</b> {{ desc.feathures }}</h5>
-                <h5><b>Icon:</b></br><img src="{% if desc.path_app_icon %}{{ desc.path_app_icon.url }}{% endif %}"></h5>
-                <h5><b>Large promo:</b></br><img src="{% if desc.path_large_promo %}{{ desc.path_large_promo.url }}{% endif %}"></h5>
-                <h5><b>Screens:</b></br>{% if theme.path_full_description %}{{ desc.path_screens_folder.url }}{% endif %}</h5>
-            </div>
+            </br>
         </div>
-        {% endfor %}
-    </div>
 </div>
 
 <script>
+    /* 
+    * WTF???????????
+    */
 	$.each($('[data-result-id]'), function(){
 		$(this).on('click', function(){
 			var id = $(this).data('result-id');
@@ -102,5 +111,35 @@
 			// console.log(id);
 		});
 	});
+
+    /*
+    * Submit description Form
+    */
+    var descForm = $("#descForm");
+    //console.log(descForm.serialize());
+    descForm.submit(function(e)
+    {
+        var postData = $(this).serializeArray();
+        var formURL = $(this).attr("action");
+        $.ajax(
+        {
+            url : formURL,
+            type: "POST",
+            data : postData,
+            success:function(data, textStatus, jqXHR) 
+            {
+                console.log(data);
+            },
+            error: function(jqXHR, textStatus, errorThrown) 
+            {
+                console.log('submit fails');   
+            }
+        });
+        e.preventDefault(); //STOP default action
+        //e.unbind(); //unbind. to stop multiple form submit.
+    });
+     
+
+    //descForm.submit(); //Submit  the FORM
 </script>
 {% endblock %}

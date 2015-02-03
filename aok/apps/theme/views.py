@@ -2,14 +2,17 @@ import base64
 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from django.core.context_processors import csrf
 from django.shortcuts import render
 
-from models import Engine, Theme
+from models import Engine, Theme, Description
 from apps.utils.config import template_folders
 from apps.utils import apk_controller as controller
 from source.settings import MEDIA_ROOT
-from django.core.urlresolvers import reverse
+
+import json
+
 
 @login_required
 def themes(request, engine_id=0):
@@ -32,6 +35,26 @@ def show(request, theme_id=0):
     c.update(csrf(request))
     return render(request, 'theme/theme.html', c)
 
+@login_required
+def edit_description(request, desc_id=0):
+    desc = Description.objects.get(id=desc_id)
+
+    if 'title' in request.POST:
+        desc.title = request.POST['title']
+    if 'keywords' in request.POST:
+        desc.keywords = request.POST['keywords']
+    if 'features' in request.POST:
+        desc.feathures = request.POST['features']
+    if 'full' in request.POST:
+        desc.save_full_description(request.POST['full'])
+    if 'short' in request.POST:
+        desc.save_short_description(request.POST['short'])
+    
+    desc.save()
+
+    
+    return HttpResponse(json.dumps([desc.to_json()]), content_type="application/json")
+    
 @login_required
 def add(request):
     if request.method == 'POST':
@@ -57,7 +80,7 @@ def zip(request, type='nobody'):
         f = open(MEDIA_ROOT+'/'+str(theme.path_res_folder), 'w')
         f.write(file_content)
         f.close()
-    return  HttpResponseRedirect(reverse('themes'))
+    return  HttpResponseRedirect('/theme/themes/')
 
 @login_required
 def change(request):
@@ -97,4 +120,4 @@ def change(request):
         elif action == 'btn_market':
             print 'WARNING: No code to load to market'
         theme.save()
-    return HttpResponseRedirect(reverse('themes'))
+    return HttpResponseRedirect('/theme/themes/')
