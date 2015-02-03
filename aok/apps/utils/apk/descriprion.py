@@ -20,7 +20,7 @@ SCREENS = template_folders.UPLOAD_SCREENS_FOLDER + "{0}screen_{1}.png"
 
 def __get_template_desc(lang, theme):
     template = TemplateDescription.objects.filter(language=lang, engine=theme.engine)
-    desc = ""
+
     if template:
         desc = template[0].template_description
     else:
@@ -36,17 +36,18 @@ def __save_desc(path, lang, theme):
 def __generate_def_desc(theme):
     en_desc = Description()
 
-    en_desc.language = Language.objects.filter(name_short="en")[0];
+    lang = en_desc.language = Language.objects.filter(name_short="en")[0];
 
     en_desc.theme = theme
     en_desc.title = theme.engine.name + " " + theme.title
     
     en_desc.keywords = utils.tuple2str(utils.associate(theme.title), ", ");
     
-    en_desc.path_full_description = FULL_DESC.format(IDENT.format("en"))
-    __save_desc(en_desc.path_full_description, en_desc.language, theme)
-    en_desc.path_short_description = SHORT_DESC.format(IDENT.format("en"))
-    __save_desc(en_desc.path_short_description, en_desc.language, theme)
+    en_desc.save() #to create id
+
+    txt = __get_template_desc(lang, theme)
+    en_desc.save_full_description(txt)
+    en_desc.save_short_description(txt[:80])
 
     en_desc.path_app_icon = APP_ICON.format(IDENT.format("en"))
     utils.downloadIcon(theme.title, en_desc.path_app_icon.path)
@@ -83,9 +84,10 @@ def generate_desc(theme):
             else:
                 desc.keywords = utils.tuple2str(keywords, ", ")
             
-            desc.path_full_description = FULL_DESC.format(IDENT.format(lang.name_short))
-            __save_desc(desc.path_full_description, lang, theme)
-            desc.path_short_description = SHORT_DESC.format(IDENT.format(lang.name_short))
-            __save_desc(desc.path_short_description, lang, theme)
+            desc.save()
+
+            txt = __get_template_desc(lang, theme)
+            desc.save_full_description(txt)
+            desc.save_short_description(txt[:80])
 
             desc.save()

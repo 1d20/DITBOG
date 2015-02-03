@@ -83,6 +83,18 @@ class Description(models.Model):
                 return f.read()
         return ''
 
+    def save_full_description(self, new_desc):
+        if not self.path_full_description:
+            self.path_full_description = template_folders.UPLOAD_FULL_DESC_FOLDER + "/%d.txt" % self.pk
+        with open(self.path_full_description.path, 'w+') as f:
+            f.write(new_desc)
+
+    def save_short_description(self, new_desc):
+        if not self.path_short_description:
+            self.path_short_description = template_folders.UPLOAD_SHORT_DESC_FOLDER + "/%d.txt" % self.pk
+        with open(self.path_short_description.path, 'w+') as f:
+            f.write(new_desc)
+
     def __unicode__(self):
         return u'%s : %s' % (self.title, self.theme)
 
