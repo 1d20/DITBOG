@@ -1,222 +1,173 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+from __future__ import unicode_literals
+
+from django.db import models, migrations
 
 
-class Migration(SchemaMigration):
+class Migration(migrations.Migration):
 
-    def forwards(self, orm):
-        # Adding model 'Market'
-        db.create_table('theme_market', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('path_script', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-        ))
-        db.send_create_signal('theme', ['Market'])
+    dependencies = [
+    ]
 
-        # Adding model 'Engine'
-        db.create_table('theme_engine', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('package_template_name', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('path_sertificate', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-            ('pass_sertificate', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('path_source', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-            ('path_info_appdf', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-            ('path_script_screen', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-            ('path_script_res', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-            ('path_script_asset', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-        ))
-        db.send_create_signal('theme', ['Engine'])
-
-        # Adding model 'Language'
-        db.create_table('theme_language', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name_long', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('name_short', self.gf('django.db.models.fields.CharField')(max_length=255)),
-        ))
-        db.send_create_signal('theme', ['Language'])
-
-        # Adding model 'TemplateDescription'
-        db.create_table('theme_templatedescription', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('language', self.gf('django.db.models.fields.related.ForeignKey')(related_name='templatedescription_language', to=orm['theme.Language'])),
-            ('engine', self.gf('django.db.models.fields.related.ForeignKey')(related_name='templatedescription_engine', to=orm['theme.Engine'])),
-            ('template_description', self.gf('django.db.models.fields.TextField')()),
-        ))
-        db.send_create_signal('theme', ['TemplateDescription'])
-
-        # Adding model 'Theme'
-        db.create_table('theme_theme', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('engine', self.gf('django.db.models.fields.related.ForeignKey')(related_name='theme_engine', to=orm['theme.Engine'])),
-            ('version', self.gf('django.db.models.fields.CharField')(default='1.0', max_length=10)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=25)),
-            ('package_name', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('path_res_folder', self.gf('django.db.models.fields.files.FileField')(default=None, max_length=100)),
-            ('path_asset_folder', self.gf('django.db.models.fields.files.FileField')(default=None, max_length=100)),
-            ('ad_code', self.gf('django.db.models.fields.CharField')(default='', max_length=255)),
-            ('path_to_apk', self.gf('django.db.models.fields.files.FileField')(default=None, max_length=100)),
-            ('date_add', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
-        ))
-        db.send_create_signal('theme', ['Theme'])
-
-        # Adding model 'Description'
-        db.create_table('theme_description', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('language', self.gf('django.db.models.fields.related.ForeignKey')(related_name='description_language', to=orm['theme.Language'])),
-            ('theme', self.gf('django.db.models.fields.related.ForeignKey')(related_name='description_theme', to=orm['theme.Theme'])),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('keywords', self.gf('django.db.models.fields.TextField')(default=None)),
-            ('path_short_description', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-            ('path_full_description', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-            ('feathures', self.gf('django.db.models.fields.TextField')(default='-</feathure><feathure>-</feathure><feathure>-')),
-            ('path_app_icon', self.gf('django.db.models.fields.files.FileField')(default=None, max_length=100)),
-            ('path_large_promo', self.gf('django.db.models.fields.files.FileField')(default=None, max_length=100)),
-            ('path_screens_folder', self.gf('django.db.models.fields.files.FileField')(default=None, max_length=100)),
-        ))
-        db.send_create_signal('theme', ['Description'])
-
-        # Adding model 'ThemeMarket'
-        db.create_table('theme_thememarket', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('theme', self.gf('django.db.models.fields.related.ForeignKey')(related_name='thememarket_theme', to=orm['theme.Theme'])),
-            ('market', self.gf('django.db.models.fields.related.ForeignKey')(related_name='thememarket_market', to=orm['theme.Market'])),
-            ('info', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('date_add', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
-        ))
-        db.send_create_signal('theme', ['ThemeMarket'])
-
-        # Adding model 'Ads'
-        db.create_table('theme_ads', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('gen_script', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-        ))
-        db.send_create_signal('theme', ['Ads'])
-
-        # Adding model 'ThemeAd'
-        db.create_table('theme_themead', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('theme', self.gf('django.db.models.fields.related.ForeignKey')(related_name='themead_theme', to=orm['theme.Theme'])),
-            ('ad', self.gf('django.db.models.fields.related.ForeignKey')(related_name='themead_ad', to=orm['theme.Ads'])),
-            ('value', self.gf('django.db.models.fields.CharField')(max_length=255)),
-        ))
-        db.send_create_signal('theme', ['ThemeAd'])
-
-
-    def backwards(self, orm):
-        # Deleting model 'Market'
-        db.delete_table('theme_market')
-
-        # Deleting model 'Engine'
-        db.delete_table('theme_engine')
-
-        # Deleting model 'Language'
-        db.delete_table('theme_language')
-
-        # Deleting model 'TemplateDescription'
-        db.delete_table('theme_templatedescription')
-
-        # Deleting model 'Theme'
-        db.delete_table('theme_theme')
-
-        # Deleting model 'Description'
-        db.delete_table('theme_description')
-
-        # Deleting model 'ThemeMarket'
-        db.delete_table('theme_thememarket')
-
-        # Deleting model 'Ads'
-        db.delete_table('theme_ads')
-
-        # Deleting model 'ThemeAd'
-        db.delete_table('theme_themead')
-
-
-    models = {
-        'theme.ads': {
-            'Meta': {'object_name': 'Ads'},
-            'gen_script': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '255'})
-        },
-        'theme.description': {
-            'Meta': {'object_name': 'Description'},
-            'feathures': ('django.db.models.fields.TextField', [], {'default': "'-</feathure><feathure>-</feathure><feathure>-'"}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'keywords': ('django.db.models.fields.TextField', [], {'default': 'None'}),
-            'language': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'description_language'", 'to': "orm['theme.Language']"}),
-            'path_app_icon': ('django.db.models.fields.files.FileField', [], {'default': 'None', 'max_length': '100'}),
-            'path_full_description': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
-            'path_large_promo': ('django.db.models.fields.files.FileField', [], {'default': 'None', 'max_length': '100'}),
-            'path_screens_folder': ('django.db.models.fields.files.FileField', [], {'default': 'None', 'max_length': '100'}),
-            'path_short_description': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
-            'theme': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'description_theme'", 'to': "orm['theme.Theme']"}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '255'})
-        },
-        'theme.engine': {
-            'Meta': {'object_name': 'Engine'},
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'package_template_name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'pass_sertificate': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'path_info_appdf': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
-            'path_script_asset': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
-            'path_script_res': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
-            'path_script_screen': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
-            'path_sertificate': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
-            'path_source': ('django.db.models.fields.files.FileField', [], {'max_length': '100'})
-        },
-        'theme.language': {
-            'Meta': {'object_name': 'Language'},
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name_long': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'name_short': ('django.db.models.fields.CharField', [], {'max_length': '255'})
-        },
-        'theme.market': {
-            'Meta': {'object_name': 'Market'},
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'path_script': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '255'})
-        },
-        'theme.templatedescription': {
-            'Meta': {'object_name': 'TemplateDescription'},
-            'engine': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'templatedescription_engine'", 'to': "orm['theme.Engine']"}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'language': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'templatedescription_language'", 'to': "orm['theme.Language']"}),
-            'template_description': ('django.db.models.fields.TextField', [], {})
-        },
-        'theme.theme': {
-            'Meta': {'object_name': 'Theme'},
-            'ad_code': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '255'}),
-            'date_add': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            'engine': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'theme_engine'", 'to': "orm['theme.Engine']"}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'package_name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'path_asset_folder': ('django.db.models.fields.files.FileField', [], {'default': 'None', 'max_length': '100'}),
-            'path_res_folder': ('django.db.models.fields.files.FileField', [], {'default': 'None', 'max_length': '100'}),
-            'path_to_apk': ('django.db.models.fields.files.FileField', [], {'default': 'None', 'max_length': '100'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '25'}),
-            'version': ('django.db.models.fields.CharField', [], {'default': "'1.0'", 'max_length': '10'})
-        },
-        'theme.themead': {
-            'Meta': {'object_name': 'ThemeAd'},
-            'ad': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'themead_ad'", 'to': "orm['theme.Ads']"}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'theme': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'themead_theme'", 'to': "orm['theme.Theme']"}),
-            'value': ('django.db.models.fields.CharField', [], {'max_length': '255'})
-        },
-        'theme.thememarket': {
-            'Meta': {'object_name': 'ThemeMarket'},
-            'date_add': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'info': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'market': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'thememarket_market'", 'to': "orm['theme.Market']"}),
-            'theme': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'thememarket_theme'", 'to': "orm['theme.Theme']"})
-        }
-    }
-
-    complete_apps = ['theme']
+    operations = [
+        migrations.CreateModel(
+            name='Ads',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('title', models.CharField(max_length=255)),
+                ('gen_script', models.FileField(upload_to=b'script_ads')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Description',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('title', models.CharField(max_length=255)),
+                ('keywords', models.TextField(default=None)),
+                ('path_short_description', models.FileField(upload_to=b'short_description')),
+                ('path_full_description', models.FileField(upload_to=b'full_description')),
+                ('feathures', models.TextField(default=b'-</feathure><feathure>-</feathure><feathure>-')),
+                ('path_app_icon', models.FileField(default=None, upload_to=b'app_icon')),
+                ('path_large_promo', models.FileField(default=None, upload_to=b'large_promo')),
+                ('path_screens_folder', models.FileField(default=None, upload_to=b'screens_folder')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Engine',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=255)),
+                ('package_template_name', models.CharField(max_length=255)),
+                ('path_sertificate', models.FileField(upload_to=b'sertificate')),
+                ('pass_sertificate', models.CharField(max_length=255)),
+                ('path_source', models.FileField(upload_to=b'source')),
+                ('path_info_appdf', models.FileField(upload_to=b'info_appdf')),
+                ('path_script_screen', models.FileField(upload_to=b'script_screen')),
+                ('path_script_res', models.FileField(upload_to=b'script_res')),
+                ('path_script_asset', models.FileField(upload_to=b'script_asset')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='EngineDownloadItems',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('type', models.IntegerField(default=1, choices=[(1, b'Image')])),
+                ('count', models.IntegerField(default=1)),
+                ('value', models.CharField(max_length=255)),
+                ('engine', models.ForeignKey(to='theme.Engine')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Language',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name_long', models.CharField(max_length=255)),
+                ('name_short', models.CharField(max_length=255)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Market',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('title', models.CharField(max_length=255)),
+                ('path_script', models.FileField(upload_to=b'market')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='TemplateDescription',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('template_description', models.TextField()),
+                ('engine', models.ForeignKey(related_name='templatedescription_engine', to='theme.Engine')),
+                ('language', models.ForeignKey(related_name='templatedescription_language', to='theme.Language')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Theme',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('version', models.CharField(default=b'1.0', max_length=10)),
+                ('title', models.CharField(max_length=25)),
+                ('package_name', models.CharField(max_length=255)),
+                ('path_res_folder', models.FileField(default=None, upload_to=b'res')),
+                ('path_asset_folder', models.FileField(default=None, upload_to=b'asset')),
+                ('ad_code', models.CharField(default=b'', max_length=255)),
+                ('path_to_apk', models.FileField(default=None, upload_to=b'apk')),
+                ('date_add', models.DateTimeField(auto_now_add=True, verbose_name='Date')),
+                ('engine', models.ForeignKey(related_name='theme_engine', to='theme.Engine')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='ThemeAd',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('value', models.CharField(max_length=255)),
+                ('ad', models.ForeignKey(related_name='themead_ad', to='theme.Ads')),
+                ('theme', models.ForeignKey(related_name='themead_theme', to='theme.Theme')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='ThemeDownloadItems',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('path', models.FileField(upload_to=b'theme_items')),
+                ('engine_item', models.ForeignKey(to='theme.EngineDownloadItems')),
+                ('theme', models.ForeignKey(to='theme.Theme')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='ThemeMarket',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('info', models.CharField(max_length=255)),
+                ('date_add', models.DateTimeField(auto_now_add=True, verbose_name='Date')),
+                ('market', models.ForeignKey(related_name='thememarket_market', to='theme.Market')),
+                ('theme', models.ForeignKey(related_name='thememarket_theme', to='theme.Theme')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='description',
+            name='language',
+            field=models.ForeignKey(related_name='description_language', to='theme.Language'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='description',
+            name='theme',
+            field=models.ForeignKey(related_name='description_theme', to='theme.Theme'),
+            preserve_default=True,
+        ),
+    ]

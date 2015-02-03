@@ -18,6 +18,7 @@ INSTALLED_APPS = (
     'imaplib2',
     'ipdb',
 
+    'apps.core',
     'apps.theme',
     'apps.guest',
     'apps.utils',
