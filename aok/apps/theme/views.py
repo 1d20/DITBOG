@@ -22,11 +22,11 @@ def themes(request, engine_id=0):
         themes = Theme.objects.filter()
     else:
         title = Engine.objects.get(id=engine_id).name
-        themes = Theme.objects.filter(engine_id = engine_id)
+        themes = Theme.objects.filter(engine_id=engine_id)
 
     return render(request, 'theme/themes.html',
-                  { 'active_page':'themes', 'active_engine':int(engine_id),
-                    'engines':Engine.objects.filter(), 'title':title, 'themes': themes})
+                  {'active_page': 'themes', 'active_engine': int(engine_id),
+                    'engines': Engine.objects.filter(), 'title': title, 'themes': themes})
 
 @login_required
 def show(request, theme_id=0):

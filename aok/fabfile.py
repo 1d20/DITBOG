@@ -11,17 +11,17 @@ def help():
 			'run'        - 'python manage.py runserver'
 		""")
 
+
 def updatedb():
 	local('./manage.py syncdb')
 	local('./manage.py migrate')
+
 
 def startdata():
 	local('./manage.py loaddata ../support_materials/fixtures/start_data.json')
 	local('mkdir -p media/res')
 	local('mkdir -p media/asset')
 	local('mkdir -p media/apk')
-	local('mkdir -p media/short_description')
-	local('mkdir -p media/full_description')
 	local('mkdir -p media/app_icon')
 	local('mkdir -p media/large_promo')
 	local('mkdir -p media/screens_folder')
@@ -35,14 +35,17 @@ def startdata():
 	local('mkdir -p media/script_ads')
 	local('mkdir -p media/theme_items')
 
+
 def testengine():
 	local('./manage.py loaddata ../support_materials/fixtures/test_engine.json')
 	local('cp -r ../support_materials/media/test_engine/ media/')
+
 
 def all():
 	updatedb()
 	startdata()
 	testengine()
+
 
 def run():
 	local('./manage.py runserver')

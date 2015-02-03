@@ -21,8 +21,6 @@ class Engine(models.Model):
     path_source = models.FileField(upload_to=tf.UPLOAD_SOURCE_FOLDER)
     path_info_appdf = models.FileField(upload_to=tf.UPLOAD_APPDF_FOLDER)
     path_script_screen = models.FileField(upload_to=tf.UPLOAD_SCREENS_SCRIPT_FOLDER)
-    path_script_res = models.FileField(upload_to=tf.UPLOAD_RES_SCRIPT_FOLDER)
-    path_script_asset = models.FileField(upload_to=tf.UPLOAD_ASSET_SCRIPT_FOLDER)
 
     def __unicode__(self):
         return u'%s' % (self.name)
@@ -60,8 +58,6 @@ class Theme(models.Model):
     version = models.CharField(max_length=10, default='1.0')
     title = models.CharField(max_length=25)
     package_name = models.CharField(max_length=255)
-    path_res_folder = models.FileField(upload_to=tf.UPLOAD_RES_FOLDER, default=None)
-    path_asset_folder = models.FileField(upload_to=tf.UPLOAD_ASSET_FOLDER, default=None)
     ad_code = models.CharField(max_length=255, default='')
     path_to_apk = models.FileField(upload_to=tf.UPLOAD_APK_FOLDER, default=None)
     date_add = models.DateTimeField(verbose_name=u'Date', auto_now_add=True)
@@ -84,44 +80,12 @@ class Description(models.Model):
     theme = models.ForeignKey('theme.theme', related_name='description_theme')
     title = models.CharField(max_length=255)
     keywords = models.TextField(default=None)
-    path_short_description = models.FileField(upload_to=tf.UPLOAD_SHORT_DESC_FOLDER)
-    path_full_description = models.FileField(upload_to=tf.UPLOAD_FULL_DESC_FOLDER)
-    feathures = models.TextField(default='-</feathure><feathure>-</feathure><feathure>-')
+    short_description = models.TextField(default='')
+    full_description = models.TextField(default='')
+    features = models.TextField(default='-</feature><feature>-</feature><feature>-')
     path_app_icon = models.FileField(upload_to=tf.UPLOAD_APP_ICON_FOLDER, default=None)
     path_large_promo = models.FileField(upload_to=tf.UPLOAD_LARGE_PROMO_FOLDER, default=None)
     path_screens_folder = models.FileField(upload_to=tf.UPLOAD_SCREENS_FOLDER, default=None)
-
-    def view_full_description(self):
-        if self.path_full_description:
-            with open(self.path_full_description.path, 'r') as f:
-                return f.read()
-        return ''
-
-    def view_short_description(self):
-        if self.path_short_description:
-            with open(self.path_short_description.path, 'r') as f:
-                return f.read()
-        return ''
-
-    def save_full_description(self, new_desc):
-        if not self.path_full_description:
-            self.path_full_description = tf.UPLOAD_FULL_DESC_FOLDER + "/%d.txt" % self.pk
-        with open(self.path_full_description.path, 'w+') as f:
-            f.write(new_desc)
-
-    def save_short_description(self, new_desc):
-        if not self.path_short_description:
-            self.path_short_description = tf.UPLOAD_SHORT_DESC_FOLDER + "/%d.txt" % self.pk
-        with open(self.path_short_description.path, 'w+') as f:
-            f.write(new_desc)
-
-    def to_json(self):
-        return { 'title' : self.title, 
-                 'keywords' : self.keywords,
-                 'features' : self.feathures,
-                 'full' : self.view_full_description(),
-                 'short' : self.view_short_description()}
-
 
     def __unicode__(self):
         return u'%s : %s' % (self.title, self.theme)

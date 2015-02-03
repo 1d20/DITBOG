@@ -10,9 +10,6 @@ from apps.utils import utils
 
 IDENT = "/{0.engine.name}_{0.title}_"
 
-FULL_DESC = template_folders.UPLOAD_FULL_DESC_FOLDER + "{0}full_desc.txt"
-SHORT_DESC = template_folders.UPLOAD_SHORT_DESC_FOLDER + "{0}short_desc.txt"
-
 APP_ICON = template_folders.UPLOAD_APP_ICON_FOLDER + "{0}icon.png"
 LARGE_PROMO = template_folders.UPLOAD_LARGE_PROMO_FOLDER + "{0}promo.png"
 SCREENS = template_folders.UPLOAD_SCREENS_FOLDER + "{0}screen_{1}.png"
@@ -29,10 +26,6 @@ def __get_template_desc(lang, theme):
 
     return desc.encode("UTF-8")
 
-def __save_desc(path, lang, theme):
-    with open(path.path, 'w') as f:
-        f.write(__get_template_desc(lang, theme))
-
 def __generate_def_desc(theme):
 
     lang = Language.objects.filter(name_short="en")[0]
@@ -41,18 +34,18 @@ def __generate_def_desc(theme):
 
     en_desc = Description()
 
-    lang = en_desc.language = Language.objects.filter(name_short="en")[0];
+    lang = en_desc.language = Language.objects.filter(name_short="en")[0]
 
     en_desc.theme = theme
     en_desc.title = theme.engine.name + " " + theme.title
     
-    en_desc.keywords = utils.tuple2str(utils.associate(theme.title), ", ");
+    en_desc.keywords = utils.tuple2str(utils.associate(theme.title), ", ")
     
-    en_desc.save() #to create id
+    en_desc.save()
 
     txt = __get_template_desc(lang, theme)
-    en_desc.save_full_description(txt)
-    en_desc.save_short_description(txt[:80])
+    en_desc.short_description = txt[:81]
+    en_desc.full_description = txt
 
     en_desc.path_app_icon = APP_ICON.format(IDENT.format("en"))
     utils.downloadIcon(theme.title, en_desc.path_app_icon.path)
@@ -94,7 +87,6 @@ def generate_desc(theme):
             desc.save()
 
             txt = __get_template_desc(lang, theme)
-            desc.save_full_description(txt)
-            desc.save_short_description(txt[:80])
-
+            desc.short_description = txt[:81]
+            desc.full_description = txt
             desc.save()

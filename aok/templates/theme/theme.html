@@ -94,24 +94,15 @@
                         <div id="{{ desc.pk }}" class="tab-pane fade">
                         {% endif %}
                             <div class="panel-body">
+                                <!-- TODO: Load form here. Will be two forms. At this stage of development. -->
                                 <form id="descForm" action="/theme/edit_description/{{ desc.pk }}/" method="post" class="form-horizontal">
                                     {% csrf_token %}
-                                    <div class="form-group"><label for="title" class="col-sm-2 control-label">Title:</label>
-                                        <div class="col-sm-10"><input class="form-control" name="title" value="{{ desc.title }}"></div></div>
-                                    <div class="form-group"><label for="keywords" class="col-sm-2 control-label">Keywords:</label>
-                                        <div class="col-sm-10"><input class="form-control" rows="10" cols="45" name="keywords" value="{{ desc.keywords }}"></div></div>
-                                    <div class="form-group"><label for="short" class="col-sm-2 control-label">Short description:</label>
-                                        <div class="col-sm-10"><textarea class="form-control" rows="3" cols="45" name="short">{{ desc.view_short_description }}</textarea></div></div>
-                                    <div class="form-group"><label for="full" class="col-sm-2 control-label">Full description:</label>
-                                        <div class="col-sm-10"><textarea class="form-control" rows="7" cols="45" name="full">{{ desc.view_full_description }}</textarea></div></div>
-                                    <div class="form-group"><label for="features" class="col-sm-2 control-label">Feathures:</label>
-                                        <div class="col-sm-10"><textarea class="form-control" rows="3" cols="45" name="features">{{ desc.feathures }}</textarea></div></div>
                                     <div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Icon:</label></br>
                                         <div class="col-sm-10"><img src="{% if desc.path_app_icon %}{{ desc.path_app_icon.url }}{% endif %}"></div></div>
                                     <div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Large promo:</label></br>
                                         <div class="col-sm-10"><img src="{% if desc.path_large_promo %}{{ desc.path_large_promo.url }}{% endif %}"></div></div>
                                     <div class="form-group"><label for="inputEmail3" class="col-sm-2 control-label">Screens:</label>
-                                        <div class="col-sm-10">{% if theme.path_full_description %}{{ desc.path_screens_folder.url }}{% endif %}</div></div>
+                                        <div class="col-sm-10">Screens will be here...</div></div>
                                     <div class="form-group"><div class="col-sm-offset-2 col-sm-10"><input type="submit" value="Send" class="btn btn-default"></div></div>
                                 </form>
                             </div>
