@@ -6,10 +6,10 @@ admin.autodiscover()
 
 urlpatterns = patterns(
     '',
-    url(r'^$', 'apps.core.views.home'),
-    url(r'^login/$', 'apps.guest.views.login'),
-    url(r'^auth/$', 'apps.guest.views.auth'),
-    url(r'^logout/$', 'apps.guest.views.logout'),
+    url(r'^$', 'apps.core.views.home', name='home'),
+    url(r'^login/$', 'apps.guest.views.login', name='login'),
+    url(r'^auth/$', 'apps.guest.views.auth', name='auth'),
+    url(r'^logout/$', 'apps.guest.views.logout', name='logout'),
     url(r'^theme/', include('apps.theme.urls')),
     url(r'^admin/', include(admin.site.urls))
 )

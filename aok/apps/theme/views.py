@@ -9,7 +9,7 @@ from models import Engine, Theme
 from apps.utils.config import template_folders
 from apps.utils import apk_controller as controller
 from source.settings import MEDIA_ROOT
-
+from django.core.urlresolvers import reverse
 
 @login_required
 def themes(request, engine_id=0):
@@ -57,7 +57,7 @@ def zip(request, type='nobody'):
         f = open(MEDIA_ROOT+'/'+str(theme.path_res_folder), 'w')
         f.write(file_content)
         f.close()
-    return  HttpResponseRedirect('/theme/themes/')
+    return  HttpResponseRedirect(reverse('themes'))
 
 @login_required
 def change(request):
@@ -97,4 +97,4 @@ def change(request):
         elif action == 'btn_market':
             print 'WARNING: No code to load to market'
         theme.save()
-    return HttpResponseRedirect('/theme/themes/')
+    return HttpResponseRedirect(reverse('themes'))

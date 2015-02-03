@@ -1,12 +1,13 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Авторизація</title>
-    <!-- <link href="/static/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="{% static 'vendors/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 </head>
-<body style="">
+<body>
 <div class="col-lg-3"></div>
-<form class="col-lg-6" method="post" action="/auth/">
+<form class="col-lg-6" method="post" action="{% url 'auth' %}">
     {% csrf_token %}
     <h1 align="center" class="text-warning">Authorization</h1>
     <div class="form-group">
