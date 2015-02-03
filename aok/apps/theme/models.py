@@ -95,6 +95,14 @@ class Description(models.Model):
         with open(self.path_short_description.path, 'w+') as f:
             f.write(new_desc)
 
+    def to_json(self):
+        return { 'title' : self.title, 
+                 'keywords' : self.keywords,
+                 'features' : self.feathures,
+                 'full' : self.view_full_description(),
+                 'short' : self.view_short_description()}
+
+
     def __unicode__(self):
         return u'%s : %s' % (self.title, self.theme)
 

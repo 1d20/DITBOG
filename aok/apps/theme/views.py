@@ -39,19 +39,21 @@ def show(request, theme_id=0):
 def edit_description(request, desc_id=0):
     desc = Description.objects.get(id=desc_id)
 
-
     if 'title' in request.POST:
         desc.title = request.POST['title']
     if 'keywords' in request.POST:
         desc.keywords = request.POST['keywords']
     if 'features' in request.POST:
-        desc.features = request.POST['features']
+        desc.feathures = request.POST['features']
     if 'full' in request.POST:
         desc.save_full_description(request.POST['full'])
     if 'short' in request.POST:
         desc.save_short_description(request.POST['short'])
+    
+    desc.save()
 
-    return HttpResponse(json.dumps(['hz 4e']), content_type="application/json")
+    
+    return HttpResponse(json.dumps([desc.to_json()]), content_type="application/json")
     
 @login_required
 def add(request):
