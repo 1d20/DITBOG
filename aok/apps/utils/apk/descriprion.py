@@ -34,6 +34,11 @@ def __save_desc(path, lang, theme):
         f.write(__get_template_desc(lang, theme))
 
 def __generate_def_desc(theme):
+
+    lang = Language.objects.filter(name_short="en")[0]
+    if len(Description.objects.filter(theme=theme, language=lang)):
+        return Description.objects.filter(theme=theme, language=lang)[0]
+
     en_desc = Description()
 
     lang = en_desc.language = Language.objects.filter(name_short="en")[0];
@@ -68,22 +73,24 @@ def generate_desc(theme):
     def_desc = __generate_def_desc(theme)
 
     for lang in Language.objects.all():
+        if len(Description.objects.filter(theme=theme, language=lang)):
+            continue
         if lang.name_short != "en":
             desc = Description()
             desc.language = lang;
 
             desc.theme = theme
             desc.title = utils.translate(theme.engine.name + " " + theme.title, lang.name_short)
-    
+
             keywords = []
             for keyword in def_desc.keywords.split(", "):
                 keywords.append(utils.translate(keyword, lang.name_short))
-    
+
             if len(keyword) == 1:
                 desc.keywords = keywords[0]
             else:
                 desc.keywords = utils.tuple2str(keywords, ", ")
-            
+
             desc.save()
 
             txt = __get_template_desc(lang, theme)
