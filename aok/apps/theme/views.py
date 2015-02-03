@@ -4,8 +4,9 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
 from django.core.context_processors import csrf
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 
+from forms import DescriptionForm
 from models import Engine, Theme, Description
 from apps.utils.config import template_folders
 from apps.utils import apk_controller as controller
@@ -31,30 +32,27 @@ def themes(request, engine_id=0):
 def show(request, theme_id=0):
     title=Theme.objects.get(id=theme_id).title
     c = { 'active_page':'themes', 'active_engine':0, 'engines':Engine.objects.filter(), 'title':title,
-             'theme':Theme.objects.get(id=theme_id) }
+             'theme':Theme.objects.get(id=theme_id), 'form': DescriptionForm() }
     c.update(csrf(request))
     return render(request, 'theme/theme.html', c)
 
 @login_required
 def edit_description(request, desc_id=0):
-    desc = Description.objects.get(id=desc_id)
+    desc = get_object_or_404(Description, pk=desc_id)
+    if request.method == 'GET':
+        form = DescriptionForm(instance=desc)
+    else:
+        form = DescriptionForm(request.POST)
+        if form.is_valid():
+            desc.title = form.data['title']
+            desc.keywords = form.data['keywords']
+            desc.feathures = form.data['feathures']
+            desc.save()
+            return HttpResponse({'result': 'ok'}, content_type  ='application/json')
+    data = {'form': form, 'desc': desc}
+    data.update(csrf(request))
+    return render(request, 'theme/elements/description_form.html', data)
 
-    if 'title' in request.POST:
-        desc.title = request.POST['title']
-    if 'keywords' in request.POST:
-        desc.keywords = request.POST['keywords']
-    if 'features' in request.POST:
-        desc.feathures = request.POST['features']
-    if 'full' in request.POST:
-        desc.save_full_description(request.POST['full'])
-    if 'short' in request.POST:
-        desc.save_short_description(request.POST['short'])
-    
-    desc.save()
-
-    
-    return HttpResponse(json.dumps([desc.to_json()]), content_type="application/json")
-    
 @login_required
 def add(request):
     if request.method == 'POST':

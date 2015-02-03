@@ -9,6 +9,6 @@ urlpatterns = patterns('',
     url(r'change/$', views.change, name='theme-change'),
     url(r'add/$', views.add, name='theme-add'),
     url(r'show/(?P<theme_id>\d+)/$', views.show, name='theme-show'),
-    
-    url(r'edit_description/(?P<desc_id>\d+)/$', views.edit_description),
+
+    url(r'edit_description/(?P<desc_id>\d+)/$', views.edit_description, name='theme-edit-description'),
 )
