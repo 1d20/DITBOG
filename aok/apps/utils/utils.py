@@ -28,12 +28,11 @@ def associate(word):
     key = 'c641aba304160d2b5ced42ce8e74519b'
     url = 'http://words.bighugelabs.com/api/2/' + key + '/' + word.replace(' ', '%20').replace('-', '%20') + '/json'
     request = urllib2.Request(url, headers={'User-Agent': 'Mozilla/5.0', 'Accept-Charset': 'utf-8'})
-
-    words = [word]
+   
     try:
         response = urllib2.urlopen(request).read()
     except:
-        return words
+        return [word]
 
     data = json.loads(response)
 
@@ -42,12 +41,9 @@ def associate(word):
     elif data.get('adjective'):
         root = 'adjective'
     else:
-        return words
+        return [words]
 
-    for i in range(4):
-        words.append(data[root]['syn'][i])
-
-    return words
+    return [word] + data[root]['syn'][1:4]
 
 
 def __downloadImage(theme_name, out_file_path):
