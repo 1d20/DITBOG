@@ -79,14 +79,19 @@
             <h3 class="panel-title">{{ desc.language }}</h3>
             </div>
             <div class="panel-body">
-                <h5><b>Title:</b> {{ desc.title }}</h5>
-                <h5><b>Keywords:</b> {{ desc.keywords }}</h5>
-                <h5><b>Short description:</b> {% if desc.path_short_description %}{{ desc.path_short_description.url }}{% endif %}</h5>
-                <h5><b>Full description:</b> {% if desc.path_full_description %}{{ desc.path_full_description.url }}{% endif %}</h5>
-                <h5><b>Feathures:</b> {{ desc.feathures }}</h5>
-                <h5><b>Icon:</b></br><img src="{% if desc.path_app_icon %}{{ desc.path_app_icon.url }}{% endif %}"></h5>
-                <h5><b>Large promo:</b></br><img src="{% if desc.path_large_promo %}{{ desc.path_large_promo.url }}{% endif %}"></h5>
-                <h5><b>Screens:</b></br>{% if theme.path_full_description %}{{ desc.path_screens_folder.url }}{% endif %}</h5>
+                <form id="descForm" action="/sendDescrUrl/" method="post">
+                    
+                    <p><b>Title:</b>
+                        <textarea rows="10" cols="45" name="text">{{ desc.title }}</textarea></p>
+                    <p><b>Keywords:</b><textarea rows="10" cols="45" name="text"> {{ desc.keywords }}</textarea></p>
+                    <p><b>Short description:</b><textarea rows="10" cols="45" name="text"> {% if desc.path_short_description %}{{ desc.path_short_description.url }}{% endif %}</textarea></p>
+                    <p><b>Full description:</b><textarea rows="10" cols="45" name="text"> {% if desc.path_full_description %}{{ desc.path_full_description.url }}{% endif %}</textarea></p>
+                    <p><b>Feathures:</b><textarea rows="10" cols="45" name="text"> {{ desc.feathures }}</textarea></p>
+                    <p><b>Icon:</b></br><img src="{% if desc.path_app_icon %}{{ desc.path_app_icon.url }}{% endif %}"></p>
+                    <p><b>Large promo:</b></br><img src="{% if desc.path_large_promo %}{{ desc.path_large_promo.url }}{% endif %}"></p>
+                    <p><b>Screens:</b></br>{% if theme.path_full_description %}{{ desc.path_screens_folder.url }}{% endif %}</p>
+                    <p><input type="submit" value="Send"></p>
+                </form>
             </div>
         </div>
         {% endfor %}
@@ -102,5 +107,30 @@
 			// console.log(id);
 		});
 	});
+    var descForm = $("#descForm");
+    //console.log(descForm.serialize());
+    descForm.submit(function(e)
+    {
+        var postData = $(this).serializeArray();
+        var formURL = $(this).attr("action");
+        $.ajax(
+        {
+            url : formURL,
+            type: "POST",
+            data : postData,
+            success:function(data, textStatus, jqXHR) 
+            {
+                console.log(data);
+            },
+            error: function(jqXHR, textStatus, errorThrown) 
+            {
+                console.log('submit fails');   
+            }
+        });
+        e.preventDefault(); //STOP default action
+        //e.unbind(); //unbind. to stop multiple form submit.
+    });
+     
+    //descForm.submit(); //Submit  the FORM
 </script>
 {% endblock %}
