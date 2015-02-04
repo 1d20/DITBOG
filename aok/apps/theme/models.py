@@ -30,7 +30,11 @@ class EngineDownloadItems(models.Model):
     item_type = models.IntegerField(choices=ITEM_TYPES, default=1)
     folder_type = models.IntegerField(choices=FOLDER_TYPES, default=1)
     count = models.IntegerField(default=1)
-    value = models.CharField(max_length=255)
+    required_count = models.BooleanField(default=True) # Is required max count
+    value = models.CharField(max_length=255, default='')
+    height = models.IntegerField(default=0)
+    width = models.IntegerField(default=0)
+    template_name = models.CharField(max_length=255, default='{0}')
 
     def __unicode__(self):
         return '%s: %s(%s)' % (self.engine.name, self.get_item_type_display(), str(self.count))

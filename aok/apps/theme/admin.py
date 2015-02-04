@@ -16,7 +16,7 @@ class EngineDownloadItemsInline(admin.TabularInline):
             instance.save()
             return form.save(commit=commit)
 
-    fields = ['item_type', 'value', 'count']
+    fields = ['item_type', 'count', 'required_count', 'value', 'height', 'width', 'template_name']
     model = models.EngineDownloadItems
     extra = 0
 
