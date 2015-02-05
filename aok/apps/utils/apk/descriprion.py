@@ -6,7 +6,7 @@ from apps.theme.models import Description
 from apps.theme.models import Language
 from apps.theme.models import TemplateDescription
 
-from apps.utils import utils
+from apps.utils.utils import associate, downloadIcon, downloadPromo, translate, tuple2str
 
 IDENT = "/{0.engine.name}_{0.title}_"
 
@@ -22,7 +22,7 @@ def __get_template_desc(lang, theme):
         desc = template[0].template_description
     else:
         desc = TemplateDescription.objects.filter(language=Language.objects.filter(name_short="en")[0], engine=theme.engine)[0].template_description
-        desc = utils.translate(desc, lang.name_short)
+        desc = translate(desc, lang.name_short)
 
     return desc.encode("UTF-8")
 

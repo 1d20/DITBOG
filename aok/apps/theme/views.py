@@ -91,8 +91,9 @@ def change(request):
         elif action == 'btn_desc':
             controller.generate_desc(theme)
         elif action == 'btn_res':
-            controller.generate_res(theme, template_folders.PATH_TO_MEDIA_FOLDER,
-                                        theme.engine.path_script_res, template_folders.UPLOAD_RES_FOLDER )
+            theme.generate_res()
+            #controller.generate_res(theme, template_folders.PATH_TO_MEDIA_FOLDER,
+            #                            theme.engine.path_script_res, template_folders.UPLOAD_RES_FOLDER )
         elif action == 'btn_asset':
             controller.generate_asset(theme, template_folders.PATH_TO_MEDIA_FOLDER,
                                         theme.engine.path_script_asset, template_folders.UPLOAD_ASSET_FOLDER )
