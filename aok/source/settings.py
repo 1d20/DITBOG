@@ -15,6 +15,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    'kombu.transport.django',
+
     'imaplib2',
     'ipdb',
 
@@ -22,6 +25,7 @@ INSTALLED_APPS = (
     'apps.theme',
     'apps.guest',
     'apps.utils',
+    'apps.image_loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -37,6 +41,8 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'source.urls'
 
 WSGI_APPLICATION = 'source.wsgi.application'
+
+BROKER_URL = 'django://' #Celery
 
 DATABASES = {
     'default': {

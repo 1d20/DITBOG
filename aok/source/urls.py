@@ -11,6 +11,7 @@ urlpatterns = patterns(
     url(r'^auth/$', 'apps.guest.views.auth', name='auth'),
     url(r'^logout/$', 'apps.guest.views.logout', name='logout'),
     url(r'^theme/', include('apps.theme.urls')),
+    url(r'^image_loader/', include('apps.image_loader.urls')),
     url(r'^admin/', include(admin.site.urls))
 )
 
