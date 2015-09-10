@@ -1,6 +1,6 @@
 __author__ = 'Detonavomek'
 from apps.utils.apk import package_name, resources, assets, apk, descriprion
-
+from apps.utils.appdf.builder import build
 
 def add_version(current_version):
     return str(float(current_version)+0.1)
@@ -24,3 +24,6 @@ def generate_apk(theme_object):
 
 def generate_desc(theme_object):
     return descriprion.generate_desc(theme_object)
+
+def generate_appdf(theme_object):
+	return build(theme_object)

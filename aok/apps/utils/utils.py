@@ -1,3 +1,5 @@
+from os import rename, remove
+from urllib2 import Request, urlopen
 import urllib
 import urllib2
 import json
@@ -46,29 +48,57 @@ def associate(word):
     return [word] + data[root]['syn'][1:4]
 
 
-def __downloadImage(theme_name, out_file_path):
+def check_if_image(url):
+    request = Request(url)
+    request.get_method = lambda : 'HEAD'
+    try:
+        response = urlopen(request)
+        maintype = response.info().maintype
+    except:
+        return False
+    print 'check_if_image: maintype =', maintype, maintype == 'image'
+    return maintype == 'image'
+
+
+def __downloadImage(theme_name, out_file_path, start=0):
     theme_name = theme_name.replace(' ', '%20').replace('-', '%20').lower()
-    url = 'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=' + theme_name
+    url = 'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=' + theme_name + '&start=' + str(start)
     request = urllib2.Request(url, None, {'Referer': ''})
     result = json.load(urllib2.urlopen(request))
-    url = result['responseData']['results'][0]['url']
-    urllib.urlretrieve(url, out_file_path)
+
+    for res in result['responseData']['results']: 
+        url = res['url']
+        print '__downloadImage url:', url
+        if check_if_image(url):
+            print 'downloading...'
+            urllib.urlretrieve(url, out_file_path)
+            return
+    __downloadImage(theme_name, out_file_path, start + 4)
+
+
+def resizeImg(src, trg, size):
+    try:
+        img = Image.open(src)
+        img = img.resize(size, Image.BILINEAR)#ANTIALIAS
+        img.save(trg)
+        if src != trg:
+            remove(src)
+    except:
+        if src != trg:
+            rename(src, str(src)+'.jpg')
+            resizeImg(src, trg, size)
 
 
 def downloadIcon(theme_name, out_file_path):
     width = height = 512
     __downloadImage(theme_name, out_file_path)
-    Image.open(out_file_path).resize((int(width), int(height)), Image.ANTIALIAS).save(out_file_path)
+    resizeImg(out_file_path, out_file_path, (width, height))
 
 
 def downloadPromo(theme_name, out_file_path):
     width = 1024
     height = 512
     __downloadImage(theme_name, out_file_path)
-    Image.open(out_file_path).resize((int(width), int(height)), Image.ANTIALIAS).save(out_file_path)
+    resizeImg(out_file_path, out_file_path, (width, height))
 
 
-def resizeImg(src, trg, size):
-    img = Image.open(src)
-    img = img.resize(size, Image.BILINEAR)
-    img.save(trg)

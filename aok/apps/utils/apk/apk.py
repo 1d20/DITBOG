@@ -5,26 +5,33 @@ import shutil
 from subprocess import call
 
 from apps.theme.models import Description
-from apps.utils import utils
-from apps.utils.config import template_folders
+import apps.image_processor as image
+from apps.utils.config.template_folders import *
 
 
-__sdkdir = "/usr/local/lib/AndroidSDK";
+__sdkdir = "/usr/local/lib/android-sdk-linux";
+
+def replace_in_file(root, file, old, new):
+	fout = os.path.join(root, file)
+	with open(fout,'r') as f:
+		newlines = f.readlines()
+	with open(fout, 'w') as f:
+		for line in newlines:
+			f.write(line.replace(old, new))
 
 def generate_sources(theme_object, tmp_dir):
 	ziptemplate = theme_object.engine.path_source
 
+	print 'tmp_dir', tmp_dir
+
 	#template
 	with zipfile.ZipFile(ziptemplate, "r") as z:
 		z.extractall(tmp_dir)
+
 	#res
-	with zipfile.ZipFile(theme_object.path_res_folder, "r") as z:
-		z.extractall(tmp_dir + "/res")
-	#asset
-	with zipfile.ZipFile(theme_object.path_asset_folder, "r") as z:
-		z.extractall(tmp_dir + "/asset")
-	
-	#--------------------------------------------------------------
+	for item in theme_object.themedownloaditems_set.all():
+		shutil.copyfile(item.path.path, tmp_dir + "/res/drawable/"+ str(item.engine_item.template_name))
+
 	#template package name
 	tpn = theme_object.engine.package_template_name
 	#out package name
@@ -37,23 +44,14 @@ def generate_sources(theme_object, tmp_dir):
 			f.write('sdk.dir=' + __sdkdir)
 
 	#AndroidManifest.xml
-	am = tmp_dir + '/AndroidManifest.xml'
-	if os.path.isfile(am):
-		with open(am, 'r+') as f:
-			content = f.read().decode('utf-8')
-			content = content.replace(tpn, opn).encode('utf-8')
-			f.seek(0)
-			f.write(content)
+	replace_in_file(tmp_dir, 'AndroidManifest.xml', tpn, opn)
 
 	#src package
 	for root, dirs, files in os.walk(tmp_dir + '/src'):
 		for file in files:
 			if file.endswith(".java"):
-				with open(os.path.join(root, file), 'r+') as f:
-					content = f.read().decode('utf-8')
-					content = content.replace(tpn, opn).encode('utf-8')
-					f.seek(0)
-					f.write(content)
+				replace_in_file(root, file, tpn, opn)
+
 
 	#src dir
 	curdir = tmp_dir + '/src'
@@ -68,42 +66,31 @@ def generate_sources(theme_object, tmp_dir):
 	for root, dirs, files in os.walk(tmp_dir + '/res'):
 		for file in files:
 			if file.endswith(".xml"):
-				with open(os.path.join(root, file), 'r+') as f:
-					content = f.read().decode('utf-8')
-					content = content.replace(tpn, opn).encode('utf-8')
-					f.seek(0)
-					f.write(content)
+				replace_in_file(root, file, tpn, opn)
 
 	#application name
 	#doto
 	old = '<string name="app_name">aoktest</string>'
-	descriptions = Description.objects.filter(theme=theme_object)
-	for desc in descriptions:
+
+	for desc in Description.objects.filter(theme=theme_object):
 		lang = desc.language.name_short
-		strf = tmp_dir
 		if lang == "en":
-			strf += '/res/values/strings.xml'
-			
-			#icon
-			utils.resizeImg(desc.path_app_icon, tmp_dir + '/res/drawable/ic_launcher.png', (72, 72))
+			strf = 'res/values/strings.xml'	
+			image.resize(desc.path_app_icon, tmp_dir + '/res/drawable/ic_launcher.png', (72, 72))
 		else:
-			strf += '/res/values-' + lang + '/strings.xml'
+			strf = 'res/values-' + lang + '/strings.xml'
 
 		if os.path.isfile(strf):
 			new = '<string name="app_name">' + desc.title + '</string>'
-			with open(strf, 'r+') as f:
-					content = f.read().decode('utf-8')
-					content = content.replace(old, new).encode('utf-8')
-					f.seek(0)
-					f.write(content)
-
+			replace_in_file(tmp_dir, strf, old, new)
 	return
+
 
 def build_unsigned_apk(tmp_dir):
 	sdir = os.path.dirname(os.path.abspath(__file__))
 
 	os.chdir(tmp_dir)
-	call(["ant", "release"])
+	call(["ant", "debug"])
 
 
 	os.chdir(sdir)
@@ -111,22 +98,23 @@ def build_unsigned_apk(tmp_dir):
 def generate_apk(theme_object):
 	#theme_object = Theme.objects.all()[0]
 	
-	tmp_dir = template_folders.PATH_TO_MEDIA_FOLDER + "/" + template_folders.UPLOAD_APK_FOLDER + "/inProgress/" + theme_object.engine.name + theme_object.title
+	tmp_dir = os.path.join(APK_FOLDER, theme_object.engine.name + theme_object.title)
 	
 	generate_sources(theme_object, tmp_dir)
 
 	build_unsigned_apk(tmp_dir)
 
-	apk_file = template_folders.PATH_TO_MEDIA_FOLDER + "/" + template_folders.UPLOAD_APK_FOLDER + '/' + theme_object.package_name + '.apk'
+	apk_file = APK_FOLDER + '/' + theme_object.package_name + '.apk'
 	for root, dirs, files in os.walk(tmp_dir + '/bin'):
 		for file in files:
 			print file
 			if file.endswith(".apk"):
 				os.rename(os.path.join(root, file), apk_file)
+				break
 				
 	theme_object.path_to_apk = apk_file
 	theme_object.save()
 	
-	shutil.rmtree(template_folders.PATH_TO_MEDIA_FOLDER + "/" + template_folders.UPLOAD_APK_FOLDER + "/inProgress")
+	shutil.rmtree(tmp_dir)
 
-	return None
+	return theme_object.package_name + '.apk'

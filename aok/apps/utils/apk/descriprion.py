@@ -1,4 +1,4 @@
-from apps.utils.config import template_folders
+from apps.utils.config.template_folders import *
 
 __author__ = 'Detonavomek'
 
@@ -10,9 +10,9 @@ from apps.utils.utils import associate, downloadIcon, downloadPromo, translate, 
 
 IDENT = "/{0.engine.name}_{0.title}_"
 
-APP_ICON = template_folders.UPLOAD_APP_ICON_FOLDER + "{0}icon.png"
-LARGE_PROMO = template_folders.UPLOAD_LARGE_PROMO_FOLDER + "{0}promo.png"
-SCREENS = template_folders.UPLOAD_SCREENS_FOLDER + "{0}screen_{1}.png"
+APP_ICON = APP_ICON_FOLDER + "{0}icon.png"
+LARGE_PROMO = LARGE_PROMO_FOLDER + "{0}promo.png"
+SCREENS = SCREENS_FOLDER + "{0}screen_{1}.png"
 
 
 def __get_template_desc(lang, theme):
@@ -24,7 +24,7 @@ def __get_template_desc(lang, theme):
         desc = TemplateDescription.objects.filter(language=Language.objects.filter(name_short="en")[0], engine=theme.engine)[0].template_description
         desc = translate(desc, lang.name_short)
 
-    return desc.encode("UTF-8")
+    return desc
 
 def __generate_def_desc(theme):
 
@@ -39,7 +39,7 @@ def __generate_def_desc(theme):
     en_desc.theme = theme
     en_desc.title = theme.engine.name + " " + theme.title
     
-    en_desc.keywords = utils.tuple2str(utils.associate(theme.title), ", ")
+    en_desc.keywords = tuple2str(associate(theme.title), ", ")
     
     en_desc.save()
 
@@ -48,9 +48,9 @@ def __generate_def_desc(theme):
     en_desc.full_description = txt
 
     en_desc.path_app_icon = APP_ICON.format(IDENT.format("en"))
-    utils.downloadIcon(theme.title, en_desc.path_app_icon.path)
+    downloadIcon(theme.title, en_desc.path_app_icon.path)
     en_desc.path_large_promo = LARGE_PROMO.format(IDENT.format("en"))
-    utils.downloadPromo(theme.title, en_desc.path_large_promo.path)
+    downloadPromo(theme.title, en_desc.path_large_promo.path)
     en_desc.path_screens_folder = SCREENS.format(IDENT.format("en"), "0")
     
     en_desc.save()
@@ -73,20 +73,21 @@ def generate_desc(theme):
             desc.language = lang;
 
             desc.theme = theme
-            desc.title = utils.translate(theme.engine.name + " " + theme.title, lang.name_short)
+            desc.title = translate(theme.engine.name + " " + theme.title, lang.name_short)
 
             keywords = []
             for keyword in def_desc.keywords.split(", "):
-                keywords.append(utils.translate(keyword, lang.name_short))
+                keywords.append(translate(keyword, lang.name_short))
 
             if len(keyword) == 1:
                 desc.keywords = keywords[0]
             else:
-                desc.keywords = utils.tuple2str(keywords, ", ")
+                desc.keywords = tuple2str(keywords, ", ")
 
             desc.save()
 
             txt = __get_template_desc(lang, theme)
             desc.short_description = txt[:81]
+            print desc.short_description
             desc.full_description = txt
             desc.save()

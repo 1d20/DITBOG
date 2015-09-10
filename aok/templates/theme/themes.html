@@ -5,7 +5,7 @@
 {% block content  %}
 
 {% include "theme/elements/left_menu.html" %}
-<div class="col-lg-7">
+<!-- <div class="col-lg-7">
     <br/>
     <button id="btn_vers" type="button" class="btn btn-primary btn-sm">Vers++</button>
     <button id="btn_desc" type="button" class="btn btn-primary btn-sm">Desc All</button>
@@ -15,23 +15,20 @@
     <button id="btn_apk" type="button" class="btn btn-primary btn-sm">Apk</button>
     <button id="btn_all" type="button" class="btn btn-primary btn-sm">All</button>
     <button id="btn_market" type="button" class="btn btn-primary btn-sm">Market load</button>
-</div>
+</div> -->
 
 <div class="table-responsive col-lg-10">
     <br/>
     <table id="my_table" class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th><input type="checkbox" id="0" /></th>
             <th>Title</th>
-            <th>Vers</th>
+            <th>Version</th>
             <th>Pack name</th>
-            <th>Desc</th>
-            <th>Res</th>
-            <th>Asset</th>
-            <th>Adv</th>
-            <th>Apk</th>
-            <th>Markets</th>
+            <th>Description</th>
+            <th>Resourses</th>
+            <th>APK</th>
+            <th>AppDF</th>
             <th>Date</th>
         </tr>
     </thead>
@@ -39,23 +36,21 @@
     {% for theme in themes %}
     {% if theme.engine.id == active_engine or active_engine == 0 %}
         <tr>
-            <td><input type="checkbox" id="{{ theme.id }}" /></td>
             <td><a href="/theme/show/{{ theme.id }}/">{{ theme.title }}</a></td>
             <td>{{ theme.version }}</td>
             <td>{{ theme.package_name }}</td>
-            <td><img src="/static/images/{% if theme.description_theme.all|length %}yes{% else %}no{% endif %}.png" width="22px" height="22px"/></td>
-            <td><img src="/static/images/{% if theme.path_res_folder %}yes{% else %}no{% endif %}.png" width="22px" height="22px"/></td>
-            <td><img src="/static/images/{% if theme.path_asset_folder %}yes{% else %}no{% endif %}.png" width="22px" height="22px"/></td>
-            <td><img src="/static/images/{% if theme.themead_theme.all|length %}yes{% else %}no{% endif %}.png" width="22px" height="22px"/>
-            </td>
-            <td><img src="/static/images/no.png" width="22px" height="22px"/></td>
-            <td>0(0)</td>
+            <td><a href="/theme/desc/{{ theme.id }}/"><img src="/static/images/document_edit.png" width="22px" height="22px"/>Edit</a></td>
+            <td><a href="/theme/res/{{ theme.id }}/"><img src="/static/images/document_edit.png" width="22px" height="22px"/>Edit</a></td>
+            <td><a href="/theme/apk/{{ theme.id }}/"><img src="/static/images/apk.png" width="22px" height="22px"/>Build</a></td>
+            <td><a href="/theme/appdf/{{ theme.id }}/"><img src="/static/images/appdf.png" width="22px" height="22px"/>Build</a></td>
             <td>{{ theme.date_add|date:'d.m.y h:i:s' }}</td>
         </tr>
     {% endif %}
     {% endfor %}
     </tbody>
     </table>
+
+
     <form id="form_to_send" method="post" action="/theme/change/">
         {% csrf_token %}
     </form>

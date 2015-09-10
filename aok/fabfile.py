@@ -5,7 +5,7 @@ def help():
 	print ("""
 		Commands:
 			'updatedb'   - create/update db and do all migrations
-			'startdata'  - filling db start data
+			'startdata'  - filling db with test data
 			'testengine' - add test engine to db and media folder
 			'all'        - 'updatedb' + 'startdata' + 'testengine'
 			'run'        - 'python manage.py runserver'
@@ -13,15 +13,16 @@ def help():
 
 
 def updatedb():
-	local('./manage.py syncdb')
-	local('./manage.py migrate')
+	local('python manage.py syncdb')
+	local('python manage.py migrate')
 
 
 def startdata():
-	local('./manage.py loaddata ../support_materials/fixtures/start_data.json')
+	local('python manage.py loaddata ../support_materials/fixtures/start_data.json')
 	local('mkdir -p media/res')
 	local('mkdir -p media/asset')
 	local('mkdir -p media/apk')
+	local('mkdir -p media/appdf')
 	local('mkdir -p media/app_icon')
 	local('mkdir -p media/large_promo')
 	local('mkdir -p media/screens_folder')
@@ -37,7 +38,7 @@ def startdata():
 
 
 def testengine():
-	local('./manage.py loaddata ../support_materials/fixtures/test_engine.json')
+	local('python manage.py loaddata ../support_materials/fixtures/test_engine.json')
 	local('cp -r ../support_materials/media/test_engine/ media/')
 
 
@@ -48,4 +49,4 @@ def all():
 
 
 def run():
-	local('./manage.py runserver')
+	local('python manage.py runserver')

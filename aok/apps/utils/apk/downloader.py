@@ -7,6 +7,9 @@ from PIL import Image
 from django.core.files import File
 import tempfile 
 import json
+from PIL import Image
+
+
 
 from apps.utils.config import template_folders as tf
 from apps.utils.config.download_item_types import ITEM_TYPES
@@ -74,6 +77,11 @@ def query(theme, e_item):
         print ":O"
 
 
+def save_image(url, size, name):
+    r = requests.get(url)
+    im = Image.open(StringIO(r.content))
+    im.resize(size, Image.ANTIALIAS)
+    im.save(name)
 
 #download to buffer
 # from PIL import Image

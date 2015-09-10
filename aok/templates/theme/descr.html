@@ -1,0 +1,135 @@
+<head>
+<title>Change description | Django site admin</title>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css">
+<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="/static/admin/css/ie.css" /><![endif]-->
+
+<script type="text/javascript">window.__admin_media_prefix__ = "/static/admin/";</script>
+<script type="text/javascript">window.__admin_utc_offset__ = "0";</script>
+
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+
+<meta name="robots" content="NONE,NOARCHIVE">
+<script>try {  for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){    var lastpass_f = document.forms[lastpass_iter];    if(typeof(lastpass_f.lpsubmitorig)=="undefined"){      if (typeof(lastpass_f.submit) == "function") {        lastpass_f.lpsubmitorig = lastpass_f.submit;        lastpass_f.submit = function(){          var form = this;          try {            if (document.documentElement && 'createEvent' in document)            {              var forms = document.getElementsByTagName('form');              for (var i=0 ; i<forms.length ; ++i)                if (forms[i]==form)                {                  var element = document.createElement('lpformsubmitdataelement');                  element.setAttribute('formnum',i);                  element.setAttribute('from','submithook');                  document.documentElement.appendChild(element);                  var evt = document.createEvent('Events');                  evt.initEvent('lpformsubmit',true,false);                  element.dispatchEvent(evt);                  break;                }            }          } catch (e) {}          try {            form.lpsubmitorig();          } catch (e) {}        }      }    }  }} catch (e) {}</script></head>
+
+
+<body class=" app-theme model-description change-form">
+
+<!-- Container -->
+<div id="container">
+
+    <!-- Content -->
+    <div id="content" class="colM">
+        
+        <h1>Change description</h1>
+        <div id="content-main">
+
+<form enctype="multipart/form-data" action="/theme/desc/{{theme.id}}/" method="post" id="description_form" novalidate="">
+{% csrf_token %}<div>
+  <fieldset class="module aligned ">    
+        <div class="form-row field-title">
+                <div>
+                    <label class="required" for="id_title">Title:</label>
+                        
+                            <input class="vTextField" id="id_title" maxlength="255" name="title" value="{{desc.title}}" type="text">
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-short_description">
+             <div>
+                        <label class="required" for="id_short_description">Short description:</label>
+                            <textarea class="vLargeTextField" cols="40" id="id_short_description" name="short_description" rows="10">{{desc.short_description}}</textarea>
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-full_description">
+            
+            
+                <div>
+                    
+                    
+                        <label class="required" for="id_full_description">Full description:</label>
+                        
+                            <textarea class="vLargeTextField" cols="40" id="id_full_description" name="full_description" rows="10">{{desc.full_description}}</textarea>
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+           
+        <div class="form-row field-path_app_icon">
+                <div>
+                    
+                    
+                        <label class="required" for="id_path_app_icon">Icon:</label>
+                        
+                            <p class="file-upload"><img src="/media/app_icon/{{icon}}" /> <br>Change: <input id="id_path_app_icon" name="path_app_icon" type="file"></p>
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+        
+    
+        
+    
+</fieldset>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="submit-row">
+<input value="Save" class="default" name="_save" type="submit">
+
+
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+(function($) {
+    var field;
+
+
+})(django.jQuery);
+</script>
+
+
+</div>
+</form>
+</div>
+
+        
+        <br class="clear">
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+</div>
+<!-- END Container -->

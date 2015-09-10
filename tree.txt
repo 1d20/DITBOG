@@ -1,0 +1,21 @@
+aok/
+├── apps
+│   ├── core
+│   ├── guest
+│   ├── image_loader
+│   ├── theme
+│   └── utils
+├── media
+├── source
+├── static
+│   ├── css
+│   ├── images
+│   ├── js
+│   └── vendors
+└── templates
+    ├── core
+    ├── elements
+    ├── guest
+    └── theme
+
+18 directories
