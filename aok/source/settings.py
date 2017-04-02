@@ -16,7 +16,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'kombu.transport.django',
+    # 'kombu.transport.django',
 
     'imaplib2',
     'ipdb',

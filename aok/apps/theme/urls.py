@@ -1,8 +1,7 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import url
 import views
 
-urlpatterns = patterns('',
-
+urlpatterns = [
     url(r'themes/$', views.themes, name='themes'),
     url(r'themes/(?P<engine_id>\d+)/$', views.themes, name='themes-engine'),
     url(r'zip/(?P<type>\w+)/$', views.zip, name='theme-zip-type'),
@@ -18,4 +17,4 @@ urlpatterns = patterns('',
 
 
     url(r'edit_description/(?P<desc_id>\d+)/$', views.edit_description, name='theme-edit-description'),
-)
+]

@@ -3,8 +3,7 @@ import os
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
-from django.core.context_processors import csrf
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 
 from forms import DescriptionForm
 from models import Engine, Theme, Description
@@ -12,7 +11,6 @@ from apps.utils.config import template_folders
 from apps.utils import apk_controller as controller
 from source.settings import MEDIA_ROOT
 from apps.image_processor import resize
-import json
 
 
 @login_required
@@ -33,7 +31,6 @@ def show(request, theme_id=0):
     title=Theme.objects.get(id=theme_id).title
     c = { 'active_page':'themes', 'active_engine':0, 'engines':Engine.objects.filter(), 'title':title,
              'theme':Theme.objects.get(id=theme_id), 'form': DescriptionForm() }
-    c.update(csrf(request))
     return render(request, 'theme/theme.html', c)
 
 @login_required
@@ -47,7 +44,6 @@ def edit_description(request, desc_id=0):
             form.save()
             return HttpResponse({'result': 'ok'}, content_type='application/json')
     data = {'form': form, 'desc': desc}
-    data.update(csrf(request))
     return render(request, 'theme/elements/description_form.html', data)
 
 @login_required
@@ -66,7 +62,6 @@ def add(request):
             
             return  HttpResponseRedirect('/theme/themes/')
     c = {}
-    c.update(csrf(request))
     return render(request, 'theme/theme_add.html', { 'active_page':'add_theme', 'title':'Add theme', 'active_engine':0, 'engines':Engine.objects.filter() })
 
 @login_required
