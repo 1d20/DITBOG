@@ -17,7 +17,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls))
 ]
 
-# if settings.DEBUG:
-#     urlpatterns += [
-#         static.static(r'^media/(?P<path>.*)$', document_root=settings.MEDIA_ROOT)  # TODO: Fix this
-#     ]
+if settings.DEBUG:
+    urlpatterns += static.static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
