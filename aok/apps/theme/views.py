@@ -60,7 +60,7 @@ def add(request):
             controller.generate_desc(theme)
             theme.generate_res()
             
-            return  HttpResponseRedirect('/theme/themes/')
+            return HttpResponseRedirect('/theme/themes/')
     c = {}
     return render(request, 'theme/theme_add.html', { 'active_page':'add_theme', 'title':'Add theme', 'active_engine':0, 'engines':Engine.objects.filter() })
 

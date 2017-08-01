@@ -1,7 +1,7 @@
 from django.conf import settings
 
 import os
-MEDIA_FOLDER = os.path.join(settings.BASE_DIR, 'media')
+MEDIA_FOLDER = 'media'
 
 APK_FOLDER =		os.path.join(MEDIA_FOLDER, 'apk')
 APP_ICON_FOLDER =	os.path.join(MEDIA_FOLDER, 'app_icon')
@@ -14,4 +14,3 @@ APPDF_FOLDER =		os.path.join(MEDIA_FOLDER, 'appdf')
 SCREENS_SCRIPT_FOLDER =os.path.join(MEDIA_FOLDER, 'script_screen')
 ADS_SCRIPT_FOLDER = os.path.join(MEDIA_FOLDER, 'script_ads')
 THEME_ITEMS_FOLDER =os.path.join(MEDIA_FOLDER, 'theme_items')
-

@@ -9,7 +9,7 @@ def home(request):
 
 
 def login(request):
-    return render(request, 'core/login.html', c)
+    return render(request, 'core/login.html', {})
 
 
 def auth(request):

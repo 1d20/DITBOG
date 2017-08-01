@@ -13,7 +13,6 @@ def help():
 
 
 def updatedb():
-	local('python manage.py syncdb')
 	local('python manage.py migrate')
 
 

@@ -1,4 +1,4 @@
-Django==1.10.6
+Django==1.11.3
 Pillow==2.7.0
 imaplib2==2.37.4
 ipdb==0.8
