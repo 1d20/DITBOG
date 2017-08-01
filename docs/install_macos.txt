@@ -1,0 +1,6 @@
+1. Install pip and virtualenvwrapper > easy_install pip && pip install virtualenvwrapper
+2. Create virtual environment > workon ditbog
+3. Install all packages > pip install -r aok/requirements.txt
+4. Go to project root directory > cd aok
+5. Prepare project to work(create db and fill its with initial data) > fab all
+6. Run server > fab run

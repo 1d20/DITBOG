@@ -66,7 +66,10 @@ def __downloadImage(theme_name, out_file_path, start=0):
     request = urllib2.Request(url, None, {'Referer': ''})
     result = json.load(urllib2.urlopen(request))
 
-    for res in result['responseData']['results']: 
+    if not result['responseData']:
+        return
+
+    for res in result['responseData']['results']:
         url = res['url']
         print '__downloadImage url:', url
         if check_if_image(url):

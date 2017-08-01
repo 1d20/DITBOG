@@ -1,10 +1,9 @@
 import os
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
 SECRET_KEY = '9ul+)$_x5a=@qhf9npab6bdy!_rf@6jlq5=&a7ldpkygpjp01g'
-
 DEBUG = True
-TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -16,7 +15,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'kombu.transport.django',
+    # 'kombu.transport.django',
 
     'imaplib2',
     'ipdb',
@@ -65,6 +64,23 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, "templates"),
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(BASE_DIR, "templates"),
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]

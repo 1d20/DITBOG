@@ -1,18 +1,15 @@
 from django.shortcuts import render
-
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, logout as auth_logout, login as auth_login
-from django.core.context_processors import csrf
 from django.core.urlresolvers import reverse
+
 
 def home(request):
     return render(request, 'core/home.html', {})
 
 
 def login(request):
-    c = {}
-    c.update(csrf(request))
-    return render(request, 'core/login.html', c)
+    return render(request, 'core/login.html', {})
 
 
 def auth(request):

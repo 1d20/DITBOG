@@ -1,22 +1,21 @@
 from django.conf import settings
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url, static
 from django.contrib import admin
+
+from apps.core import views
 
 admin.autodiscover()
 
-urlpatterns = patterns(
-    '',
-    url(r'^$', 'apps.core.views.home', name='home'),
-    url(r'^login/$', 'apps.core.views.login', name='login'),
-    url(r'^auth/$', 'apps.core.views.auth', name='auth'),
-    url(r'^logout/$', 'apps.core.views.logout', name='logout'),
-    
+urlpatterns = [
+    url(r'^$', views.home, name='home'),
+    url(r'^login/$', views.login, name='login'),
+    url(r'^auth/$', views.auth, name='auth'),
+    url(r'^logout/$', views.logout, name='logout'),
+
     url(r'^theme/', include('apps.theme.urls')),
-    
+
     url(r'^admin/', include(admin.site.urls))
-)
+]
 
 if settings.DEBUG:
-    urlpatterns += patterns('',
-        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.MEDIA_ROOT}))
+    urlpatterns += static.static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
